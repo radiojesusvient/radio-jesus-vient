@@ -5,6 +5,8 @@ const ASSETS_TO_CACHE = [
   './RJV_app_glassmorphism.html',
   './manifest.json',
   './LOGO PNG.png',
+  './icon-192.png',
+  './icon-512.png',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap'
 ];
 

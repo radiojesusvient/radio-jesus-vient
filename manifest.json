@@ -1,18 +1,27 @@
 {
+  "id": "org.radiojesusvient.app",
   "short_name": "RJV App",
   "name": "Radio Jésus Vient",
   "description": "Application officielle de la Radio Jésus Vient. Enseignements, musiques d'édification et partage de la foi chrétienne.",
   "icons": [
     {
-      "src": "LOGO PNG.png",
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "/index.html",
   "background_color": "#050711",
   "theme_color": "#0F268C",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "categories": ["religion", "music", "lifestyle"],
+  "prefer_related_applications": false
 }

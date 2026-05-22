@@ -38,7 +38,7 @@ self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   
   // Eviter absolument d'intercepter ou de mettre en cache le flux audio dynamique de Zeno.fm
-  if (url.hostname.includes('zeno.fm') || url.pathname.includes('yuQpum') || event.request.url.includes('stream')) {
+  if (url.hostname.includes('zeno.fm') || url.pathname.includes('jsgayqgxwdstv') || url.pathname.includes('yuQpum') || event.request.url.includes('stream')) {
     return; // Laisse le navigateur gérer directement via le réseau sans intervention
   }
   

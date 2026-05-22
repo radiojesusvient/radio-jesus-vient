@@ -18,10 +18,40 @@
     }
   ],
   "start_url": "/index.html",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
   "background_color": "#050711",
   "theme_color": "#0F268C",
   "display": "standalone",
   "orientation": "portrait",
   "categories": ["religion", "music", "lifestyle"],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "shortcuts": [
+    {
+      "name": "Écouter le Live",
+      "short_name": "Live",
+      "url": "/index.html?shortcut=live",
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Nous soutenir",
+      "short_name": "Don",
+      "url": "/index.html?shortcut=don",
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
 }

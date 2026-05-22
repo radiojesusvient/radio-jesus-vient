@@ -1,0 +1,9 @@
+# Ignore absolutely everything by default
+*
+
+# Exceptions: Allow only the official production PWA files
+!index.html
+!manifest.json
+!sw.js
+!LOGO PNG.png
+!.gitignore

@@ -2,7 +2,6 @@ const CACHE_NAME = 'rjv-app-cache-v1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
-  './app.html',
   './RJV_app_glassmorphism.html',
   './manifest.json',
   './LOGO PNG.png',

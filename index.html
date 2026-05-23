@@ -3,611 +3,2647 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Radio Jésus Vient — Préparer le Retour du Christ</title>
-    <meta name="description" content="Radio Jésus Vient. La radio qui prépare la francophonie pour la glorieuse venue de Jésus-Christ. Téléchargez notre application native Android APK et restez connectés pour ne manquer aucune prophétie de la fin des temps.">
+    <title>Radio Jésus Vient</title>
     
-    <!-- Open Graph Metadata (SEO) -->
-    <meta property="og:title" content="Radio Jésus Vient — Officiel">
-    <meta property="og:description" content="La radio qui prépare la francophonie pour le retour de Jésus-Christ. Téléchargez l'APK officiel dès maintenant.">
-    <meta property="og:image" content="/LOGO PNG.png">
-    <meta property="og:type" content="website">
-
-    <!-- Fonts -->
+    <!-- PWA Meta tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0F268C">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="LOGO PNG.png">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
-
-    <!-- Premium Styling -->
+    
     <style>
+        /* DESIGN SYSTEM - DEEP ROYAL GLASSMORPHISM */
         :root {
-            --bg-deep: #050711;
-            --primary: #0F268C;
-            --accent-gold: #D4AF37;
-            --text-light: #F4F6FC;
-            --text-muted: #8E9BB0;
-            --glass-bg: rgba(15, 38, 140, 0.12);
+            --bg-page: #050711;
+            --blue-rjv: #0F268C;
+            --blue-light: #3B82F6;
+            --blue-glow: rgba(15, 38, 140, 0.4);
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.08);
-            --card-glow: rgba(15, 38, 140, 0.35);
+            --glass-card: rgba(15, 38, 140, 0.15);
+            --glass-highlight: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* LIGHT THEME OVERRIDES */
+        body.light-theme {
+            --bg-page: #F0F4FF;
+            --blue-rjv: #0F268C;
+            --blue-light: #2563EB;
+            --blue-glow: rgba(15, 38, 140, 0.15);
+            --gold: #D97706;
+            --gold-glow: rgba(217, 119, 6, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(15, 38, 140, 0.12);
+            --glass-card: rgba(255, 255, 255, 0.85);
+            --glass-highlight: rgba(15, 38, 140, 0.05);
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-muted: #64748B;
+            --card-shadow: 0 10px 30px 0 rgba(15, 38, 140, 0.06);
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
+            background-color: var(--bg-page);
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-deep);
-            color: var(--text-light);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 20px;
+            color: var(--text-primary);
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(15, 38, 140, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 10% 20%, rgba(15, 38, 140, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
-            background-attachment: fixed;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Header / Navbar */
-        header {
+        body.light-theme {
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 38, 140, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(217, 119, 6, 0.03) 0%, transparent 45%);
+        }
+
+        /* PRODUCTION APP CONTAINER - Premium Centered Card on Desktop, Fullscreen on Mobile */
+        .app-container {
+            position: relative;
             width: 100%;
-            padding: 20px 8%;
+            max-width: 480px;
+            height: 90vh;
+            background: var(--bg-page);
+            border-radius: 30px;
+            box-shadow: var(--card-shadow), 
+                        0 20px 50px rgba(0, 0, 0, 0.6),
+                        0 0 40px rgba(15, 38, 140, 0.15);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: rgba(5, 7, 17, 0.7);
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 5;
+            transition: background-color 0.4s ease;
         }
 
-        .brand {
+        .app-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-page);
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
             display: flex;
-            align-items: center;
-            gap: 16px;
-            text-decoration: none;
-            color: var(--text-light);
+            flex-direction: column;
+            padding: 24px 20px 20px 20px;
+            background-image: 
+                radial-gradient(circle at 50% -10%, rgba(15, 38, 140, 0.4) 0%, transparent 65%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 45%);
+            transition: background 0.4s ease;
         }
 
-        .brand img {
-            width: 44px;
-            height: 44px;
+        .app-screen::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* FLOATING THEME TOGGLE */
+        .theme-toggle {
+            position: absolute;
+            top: 24px;
+            right: 18px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            border: 2px solid var(--glass-border);
-            object-fit: cover;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 90;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
         }
 
-        .brand-text h1 {
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            background: var(--glass-highlight);
+        }
+
+        .theme-toggle svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* FLOATING SETTINGS TOGGLE */
+        .settings-toggle {
+            position: absolute;
+            top: 24px;
+            left: 18px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 90;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .settings-toggle:hover {
+            transform: scale(1.05);
+            background: var(--glass-highlight);
+        }
+
+        .settings-toggle svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* BRANDING HEADER */
+        .app-header {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 12px;
+        }
+
+        .app-logo {
             font-family: 'Outfit', sans-serif;
-            font-size: 18px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .app-logo img {
+            height: 24px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* LIVE BADGE */
+        .live-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.72rem;
             font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 auto 16px auto;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .brand-text p {
-            font-size: 10px;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10B981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10B981;
+            animation: pulse-green 1.8s infinite;
         }
 
-        /* Main Portal Layout */
-        .portal-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 8% 40px;
-            align-items: center;
+        @keyframes pulse-green {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.6; }
         }
 
-        @media (max-width: 1024px) {
-            .portal-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 40px;
-                padding-top: 40px;
-            }
-        }
-
-        /* Left Side: Content & Action */
-        .portal-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        @media (max-width: 1024px) {
-            .portal-content {
-                align-items: center;
-            }
-        }
-
-        .tagline {
-            font-size: 12px;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            animation: fadeIn 1s ease;
-        }
-
-        .main-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 46px;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: slideUp 1s ease;
-        }
-
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 34px;
-            }
-        }
-
-        .hero-desc {
-            font-size: 16px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 36px;
-        }
-
-        .actions-container {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 1024px) {
-            .actions-container {
-                justify-content: center;
-            }
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, #1e3bb3 100%);
-            color: var(--text-light);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 30px var(--card-glow);
+        /* HERO CARD — DOMINANT ELEMENT */
+        .program-card {
+            background: linear-gradient(135deg, var(--glass-card), rgba(15, 38, 140, 0.05));
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 24px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 16px;
             position: relative;
             overflow: hidden;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(15, 38, 140, 0.5);
+        .program-card-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--blue-light);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
         }
 
-        .btn-secondary {
-            background-color: var(--glass-bg);
-            color: var(--text-light);
+        .program-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        /* AUDIO PLAYER (SECONDARY FOCUS) */
+        .audio-player-section {
+            display: flex;
+            align-items: center;
+            background: var(--glass-bg);
             border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 12px 18px;
+            gap: 14px;
+            margin-bottom: 16px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
 
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            background-color: rgba(15, 38, 140, 0.25);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Right Side: Interactive CSS Smartphone Mockup */
-        .mockup-wrapper {
+        .play-btn-wrapper {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
-            animation: slideUp 1.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
         }
 
-        .phone-mockup {
-            width: 290px;
-            height: 580px;
-            background: #000;
-            border-radius: 40px;
-            border: 10px solid #1c1d24;
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.8), 
-                0 0 35px var(--card-glow);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Dynamic Island / Notch */
-        .phone-notch {
+        .play-btn-glow {
             position: absolute;
-            top: 6px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 22px;
-            background: #000;
-            border-radius: 12px;
-            z-index: 10;
-            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.1);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--blue-glow);
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.3s ease;
         }
 
-        /* iframe container */
-        .phone-screen-container {
-            width: 100%;
-            height: 100%;
+        .play-btn {
             position: relative;
-            background: var(--bg-deep);
-            border-radius: 30px;
-            overflow: hidden;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue-rjv) 0%, var(--blue-light) 100%);
             border: none;
-            position: absolute;
-            top: 0;
-            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 2;
+            color: #FFF;
+            box-shadow: 0 4px 12px rgba(15, 38, 140, 0.3);
+            transition: all 0.2s ease;
         }
 
-        /* Mockup Glow Border */
-        .mockup-glow {
-            position: absolute;
-            width: 320px;
-            height: 610px;
-            background: radial-gradient(circle, rgba(15, 38, 140, 0.2) 0%, transparent 70%);
-            z-index: -1;
+        .play-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
-        /* Store Badges */
-        .stores-container {
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(15, 38, 140, 0.4);
+        }
+
+        /* Active playing state */
+        .play-btn.playing {
+            background: #FFF;
+            color: var(--blue-rjv);
+        }
+
+        body.light-theme .play-btn.playing {
+            background: var(--blue-rjv);
+            color: #FFF;
+        }
+
+        .play-btn.playing + .play-btn-glow {
+            opacity: 1;
+            transform: scale(1.2);
+            animation: pulse-glow-small 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow-small {
+            0%, 100% { transform: scale(1.1); opacity: 0.4; }
+            50% { transform: scale(1.25); opacity: 0.7; }
+        }
+
+        /* SPINNER LOADER */
+        .player-spinner {
+            position: absolute;
+            width: 38px;
+            height: 38px;
+            border: 2.5px solid transparent;
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .player-info-wrapper {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 2px;
         }
 
-        @media (max-width: 1024px) {
-            .stores-container {
-                align-items: center;
-            }
-        }
-
-        .stores-label {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
-        .badge-list {
-            display: flex;
-            gap: 12px;
-        }
-
-        .store-badge {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--glass-border);
-            padding: 8px 18px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: not-allowed;
-            position: relative;
-            filter: grayscale(1);
-            opacity: 0.6;
-        }
-
-        .store-badge .badge-icon {
-            font-size: 20px;
-        }
-
-        .store-badge-text {
-            text-align: left;
-        }
-
-        .store-badge-text span {
-            display: block;
-            font-size: 8px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .store-badge-text strong {
-            display: block;
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        .soon-pill {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: linear-gradient(135deg, var(--accent-gold) 0%, #b08d1e 100%);
-            color: var(--bg-deep);
-            font-size: 8px;
-            font-weight: 800;
-            padding: 1px 6px;
-            border-radius: 20px;
+        .player-status-title {
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+            color: var(--blue-light);
         }
 
-        /* Prophecy Section */
-        .prophecy-section {
-            width: 100%;
-            max-width: 1200px;
-            margin: 40px auto 80px;
-            padding: 0 8%;
-        }
-
-        .info-card {
-            background-color: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 36px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 24px;
+        .player-hint {
+            font-size: 0.8rem;
+            color: var(--text-primary);
             font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--accent-gold);
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
-        .info-card p {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .prophecy-quote {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 18px;
-            color: #FFFFFF;
-            border-left: 4px solid var(--accent-gold);
-            padding-left: 20px;
-            margin: 24px 0;
-            line-height: 1.6;
-            background: rgba(255, 255, 255, 0.02);
-            padding-top: 12px;
-            padding-bottom: 12px;
-            border-radius: 0 12px 12px 0;
-        }
-
-        /* Contacts Footer */
-        footer {
-            margin-top: auto;
-            border-top: 1px solid var(--glass-border);
-            background-color: rgba(5, 7, 17, 0.9);
-            padding: 40px 8%;
-            text-align: center;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .footer-logo {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
+        /* DAILY VERSE */
+        .verse-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 16px;
             margin-bottom: 16px;
-            border: 2px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .footer-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .footer-tagline {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .contacts-grid {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .contact-item {
+        .verse-card-header {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
         }
 
-        .contact-item:hover {
-            color: var(--accent-gold);
+        .verse-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            line-height: 1.45;
+            color: var(--text-primary);
+            font-style: italic;
         }
 
-        .copyright {
-            font-size: 11px;
+        .verse-ref {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--blue-light);
+            text-align: right;
+        }
+
+        /* ACTIONS RAPIDES GRID */
+        .actions-section {
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             color: var(--text-muted);
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 20px;
+            margin-bottom: 10px;
+            margin-left: 4px;
         }
 
-        /* Animations */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .action-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.25s ease;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .action-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--blue-light);
+            background: rgba(15, 38, 140, 0.08);
+        }
+
+        .action-icon-bg {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue-light);
+            transition: all 0.3s ease;
+        }
+
+        .action-card:hover .action-icon-bg {
+            background: var(--blue-light);
+            color: #FFF;
+        }
+
+        .action-card svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+        }
+
+        .action-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: -0.1px;
+        }
+
+        .action-desc {
+            font-size: 0.62rem;
+            color: var(--text-secondary);
+        }
+
+        /* Useful Links Modal Item Styling */
+        .links-section {
+            margin-bottom: 6px;
+        }
+        .link-item-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+        .link-item-row:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .link-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .link-go-arrow {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+        .link-item-row:hover .link-go-arrow {
+            transform: translateX(4px);
+        }
+
+        /* SOUTENIR RJV (DISCRET MAIS VISIBLE) */
+        .support-btn-container {
+            margin-bottom: 16px;
+        }
+
+        .btn-support {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(170, 124, 17, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 18px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        .btn-support:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(170, 124, 17, 0.1) 100%);
+            border-color: var(--gold);
+            transform: translateY(-1px);
+        }
+
+        .support-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .support-icon-wrapper {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+        }
+
+        .support-icon-wrapper svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+        }
+
+        .support-texts {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .support-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .support-subtitle {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .support-arrow {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* INVITATION WHATSAPP */
+        .invite-container {
+            margin-bottom: 24px;
+        }
+
+        .btn-invite {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.12) 0%, rgba(37, 211, 102, 0.03) 100%);
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            border-radius: 18px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: var(--card-shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .btn-invite:hover {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.18) 0%, rgba(37, 211, 102, 0.06) 100%);
+            border-color: #25D366;
+            transform: translateY(-1px);
+        }
+
+        .invite-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .invite-icon-wrapper {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: rgba(37, 211, 102, 0.12);
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #25D366;
+        }
+
+        .invite-icon-wrapper svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        .invite-texts {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .invite-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .invite-subtitle {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+        }
+
+        .invite-arrow {
+            color: #25D366;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* CREDITS & FOOTER */
+        .app-footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 12px 0 6px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-version {
+            font-size: 0.62rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--blue-light);
+        }
+
+        .footer-link {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Font accessibility scaling */
+        #appScreen {
+            --font-scale: 1.0;
+        }
+        .program-title {
+            font-size: calc(1.4rem * var(--font-scale, 1.0)) !important;
+        }
+        .play-hint {
+            font-size: calc(0.8rem * var(--font-scale, 1.0)) !important;
+        }
+        .verse-text {
+            font-size: calc(1.05rem * var(--font-scale, 1.0)) !important;
+        }
+        .action-label {
+            font-size: calc(0.78rem * var(--font-scale, 1.0)) !important;
+        }
+        .action-desc {
+            font-size: calc(0.62rem * var(--font-scale, 1.0)) !important;
+        }
+        .support-title {
+            font-size: calc(0.8rem * var(--font-scale, 1.0)) !important;
+        }
+        .support-subtitle {
+            font-size: calc(0.65rem * var(--font-scale, 1.0)) !important;
+        }
+        .invite-title {
+            font-size: calc(0.8rem * var(--font-scale, 1.0)) !important;
+        }
+        .invite-subtitle {
+            font-size: calc(0.65rem * var(--font-scale, 1.0)) !important;
+        }
+        .section-title {
+            font-size: calc(0.82rem * var(--font-scale, 1.0)) !important;
+        }
+
+        /* SETTINGS DRAWER SECTIONS */
+        .settings-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 14px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        body.light-theme .settings-section {
+            background: rgba(15, 38, 140, 0.02);
+        }
+        .settings-section-title {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            font-weight: 800;
+        }
+        .settings-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .settings-desc {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* SWITCH TOGGLE (iOS STYLE) */
+        .switch-toggle {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .switch-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.15);
+            transition: .3s;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+        }
+        body.light-theme .switch-slider {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .switch-toggle input:checked + .switch-slider {
+            background-color: #10B981;
+        }
+        .switch-toggle input:checked + .switch-slider:before {
+            transform: translateX(20px);
+        }
+
+        /* LANGUAGE SWITCH BUTTONS */
+        .lang-switch {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 2px;
+        }
+        body.light-theme .lang-switch {
+            background: rgba(15, 38, 140, 0.05);
+        }
+        .lang-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background: var(--blue-rjv);
+            color: #FFF;
+        }
+        body.light-theme .lang-btn.active {
+            background: var(--blue-rjv);
+            color: #FFF;
+        }
+
+        /* ACCESSIBILITY CONTROLS */
+        .font-scale-control {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 4px;
+        }
+        body.light-theme .font-scale-control {
+            background: rgba(15, 38, 140, 0.05);
+        }
+        .font-scale-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .font-scale-btn:hover {
+            background: var(--blue-light);
+            color: #FFF;
+        }
+        .font-scale-value {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* ALARM SETUP */
+        .alarm-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        #alarmTimeInput {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 8px;
+            outline: none;
+        }
+        body.light-theme #alarmTimeInput {
+            background: rgba(15, 38, 140, 0.05);
+            color: #0F172A;
+        }
+        .settings-btn-action {
+            background: linear-gradient(135deg, var(--blue-rjv) 0%, var(--blue-light) 100%);
+            border: none;
+            color: #FFF;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(15, 38, 140, 0.2);
+            text-align: center;
+        }
+        .settings-btn-action:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 14px rgba(15, 38, 140, 0.3);
+        }
+
+        /* FAQ ACCORDION */
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+        .faq-item {
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .faq-trigger {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-trigger::after {
+            content: '▼';
+            font-size: 0.6rem;
+            color: var(--gold);
+            transition: transform 0.2s ease;
+        }
+        .faq-item.active .faq-trigger::after {
+            transform: rotate(180deg);
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 12px;
+        }
+        .faq-item.active .faq-content {
+            max-height: 120px;
+            padding: 0 12px 10px 12px;
+        }
+        .faq-content p {
+            font-size: 0.68rem;
+            line-height: 1.4;
+            color: var(--text-secondary);
+        }
+
+        /* ACTION AND LINK BUTTONS */
+        .settings-btn-link {
+            background: transparent;
+            border: none;
+            color: var(--blue-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: left;
+            padding: 4px 0;
+            text-decoration: none;
+        }
+        .settings-btn-link:hover {
+            text-decoration: underline;
+        }
+
+        /* TOAST SYSTEM SIMULATION */
+        .toast-notification {
+            position: absolute;
+            top: 24px;
+            left: 18px;
+            right: 18px;
+            background: rgba(15, 38, 140, 0.95);
+            border: 1px solid var(--blue-light);
+            border-radius: 12px;
+            padding: 10px 14px;
+            color: #FFF;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            transform: translateY(-80px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 500;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .toast-notification.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast-bell {
+            display: inline-block;
+            animation: ring 1.5s infinite;
+            color: var(--gold);
+        }
+        @keyframes ring {
+            0% { transform: rotate(0); }
+            10% { transform: rotate(15deg); }
+            20% { transform: rotate(-10deg); }
+            30% { transform: rotate(5deg); }
+            40% { transform: rotate(-5deg); }
+            50% { transform: rotate(0); }
+            100% { transform: rotate(0); }
+        }
+
+        /* REDESIGNED DONATION / SUPPORT MODAL */
+        .support-tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 2px;
+            margin-bottom: 16px;
+        }
+        body.light-theme .support-tabs {
+            background: rgba(15, 38, 140, 0.05);
+        }
+        .support-tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .support-tab-btn.active {
+            background: var(--gold);
+            color: #FFF;
+        }
+        .support-tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .support-tab-content.active {
+            display: block;
+        }
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .momo-option {
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .momo-option:hover {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .momo-copy-tip {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.58rem;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.8;
+        }
+        .eco-data-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            padding: 3px 8px;
+            border-radius: 20px;
+            color: #10B981;
+            font-size: 0.6rem;
+            font-weight: 700;
+            margin-left: 8px;
+            text-transform: uppercase;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        /* NATIVE SLIDE-UP MODAL OVERLAYS */
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            border-radius: 30px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-card {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: rgba(10, 15, 30, 0.96);
+            border-top: 1px solid var(--glass-border);
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.5);
+            z-index: 201;
+            transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            color: #FFF;
+            max-height: 75%;
+            overflow-y: auto;
+        }
+
+        body.light-theme .modal-card {
+            background: #FFFFFF;
+            color: #0F172A;
+        }
+
+        .modal-overlay.active .modal-card {
+            bottom: 0;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .modal-close-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .modal-body {
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        /* MOBILE MONEY SHORTS */
+        .momo-option {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        body.light-theme .momo-option {
+            background: rgba(15, 38, 140, 0.02);
+        }
+
+        .momo-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            font-size: 0.75rem;
+        }
+
+        .momo-orange {
+            background: #FF6600;
+            color: #FFF;
+        }
+
+        .momo-mtn {
+            background: #FFCC00;
+            color: #000;
+        }
+
+        .momo-operator {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .momo-number {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--blue-light);
+            margin-top: 1px;
+        }
+
+        /* ON-DEVICE MOBILE RESPONSIVENESS */
+        @media (max-width: 480px) {
+            body {
+                padding: 0;
+                background-image: none;
+            }
+            .app-container {
+                max-width: 100%;
+                height: 100vh;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .app-screen {
+                padding: calc(env(safe-area-inset-top, 24px) + 20px) 18px calc(env(safe-area-inset-bottom, 20px) + 10px) 18px;
+            }
+            .modal-overlay {
+                border-radius: 0;
+            }
+            .theme-toggle, .settings-toggle {
+                top: calc(env(safe-area-inset-top, 24px) + 4px);
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="brand">
-            <img src="/LOGO PNG.png" alt="Radio Jésus Vient Logo">
-            <div class="brand-text">
-                <h1>RJV App</h1>
-                <p>Radio Officielle</p>
-            </div>
-        </a>
-    </header>
+    <!-- MAIN APP CONTAINER -->
+    <div class="app-container">
+        <!-- App screen -->
+        <div class="app-screen" id="appScreen">
+            
+            <!-- Floating Theme toggle -->
+            <button class="theme-toggle" id="themeToggleBtn" aria-label="Changer le thème">
+                <svg viewBox="0 0 24 24" id="themeIcon">
+                    <!-- Moon icon since we start in dark mode -->
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
 
-    <div class="portal-container">
-        <!-- Left Side: Copy and Actions -->
-        <div class="portal-content">
-            <div class="tagline">La Voix de la Prophétie</div>
-            <h2 class="main-title">Radio Jésus Vient</h2>
-            <p class="hero-desc">
-                La radio de vérité et de puissance spirituelle qui prépare la francophonie pour la glorieuse venue de notre Seigneur Jésus-Christ. 
-                Une voix forte dans le désert pour éclairer les nations sur les événements prophétiques de la fin des temps.
-            </p>
+            <!-- Floating Settings toggle -->
+            <button class="settings-toggle" id="settingsToggleBtn" aria-label="Ouvrir les paramètres">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+            </button>
 
-            <!-- Store and APK Actions -->
-            <div class="actions-container">
-                <a href="/app.html" target="_blank" class="btn btn-primary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                    Écouter le Direct
-                </a>
-                <a href="/org.radiojesusvient.radio.apk" download="RadioJesusVient.apk" class="btn btn-secondary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
-                    </svg>
-                    Télécharger l'APK
-                </a>
+            <!-- Toast Notification System -->
+            <div class="toast-notification" id="toastNotif">
+                <span class="toast-bell">🔔</span>
+                <span id="toastMessage">Notification RJV</span>
             </div>
 
-            <!-- Stores badges -->
-            <div class="stores-container">
-                <div class="stores-label">Disponible prochainement sur</div>
-                <div class="badge-list">
-                    <div class="store-badge">
-                        <div class="badge-icon">🤖</div>
-                        <div class="store-badge-text">
-                            <span>Bientôt sur</span>
-                            <strong>Google Play</strong>
+            <!-- App branding -->
+            <header class="app-header">
+                <div class="app-logo">
+                    <img src="LOGO PNG.png" alt="RJV Logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%230F268C\'><circle cx=\'50\' cy=\'50\' r=\'45\'/><text x=\'50\' y=\'62\' font-size=\'38\' text-anchor=\'middle\' fill=\'white\' font-family=\'Outfit\'>RJV</text></svg>'">
+                    <span data-translate="app_name">Radio Jésus Vient</span>
+                    <span id="nightSilenceIcon" style="display: none; font-size: 0.85rem; margin-left: 4px;">🌙</span>
+                </div>
+            </header>
+
+            <!-- Live badge -->
+            <div class="live-status">
+                <span class="live-dot"></span>
+                <span data-translate="live_badge">En direct · Ce soir 20h</span>
+            </div>
+
+            <!-- HERO CARD (DOMINANT ELEMENT) -->
+            <section class="program-card">
+                <span class="program-card-label" data-translate="program_label">Émission en cours</span>
+                <h2 class="program-title" data-translate="program_title">Le Discipulat — Édification et Foi</h2>
+            </section>
+
+            <!-- AUDIO PLAYER SECTION (SECONDARY FOCUS) -->
+            <section class="audio-player-section">
+                <div class="play-btn-wrapper">
+                    <div class="player-spinner" id="playerSpinner"></div>
+                    <button class="play-btn" id="playBtn" aria-label="Écouter le direct">
+                        <svg viewBox="0 0 24 24" id="playSvg">
+                            <path d="M8 5v14l11-7z" id="playPath"/>
+                        </svg>
+                    </button>
+                    <div class="play-btn-glow"></div>
+                </div>
+                <div class="player-info-wrapper">
+                    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span class="player-status-title" id="playerStatusTitle" data-translate="player_live_title">Flux Live</span>
+                            <span id="ecoDataPill" class="eco-data-pill" style="display: none;" data-translate="eco_pill">Éco 64k</span>
                         </div>
-                        <div class="soon-pill">Bientôt</div>
+                        <div class="player-timer-row" id="playerTimerRow" style="display: flex; align-items: center; gap: 4px; font-size: 0.68rem; color: var(--blue-light); font-weight: 700; background: rgba(0, 191, 255, 0.08); padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0, 191, 255, 0.15);">
+                            <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity: 0.8;"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                            <span id="playerTimerValue" style="font-family: monospace; font-weight: 700;">00:00</span>
+                        </div>
                     </div>
-                    <div class="store-badge">
-                        <div class="badge-icon">🍎</div>
-                        <div class="store-badge-text">
-                            <span>Bientôt sur</span>
-                            <strong>App Store</strong>
+                    <span class="player-hint" id="playerStatusDesc" data-translate="player_hint">Écouter la radio direct</span>
+                </div>
+            </section>
+
+            <!-- VERSET DU JOUR -->
+            <section class="verse-card">
+                <div class="verse-card-header" data-translate="verse_title">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
+                    </svg>
+                    Verset du jour
+                </div>
+                <blockquote class="verse-text" data-translate="verse_text">"Voici, l'époux vient ! Sortez à sa rencontre !"</blockquote>
+                <cite class="verse-ref">Matthieu 25:6</cite>
+            </section>
+
+            <!-- ACTIONS RAPIDES (GRILLE 2x3) -->
+            <section class="actions-section">
+                <h3 class="section-title" data-translate="actions_title">Actions Rapides</h3>
+                <div class="actions-grid">
+                    <!-- Prière -->
+                    <a href="https://wa.me/237659181154?text=Bonjour%2C%20j%27ai%20besoin%20de%20pri%C3%A8re" target="_blank" class="action-card">
+                        <div class="action-icon-bg">
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                         </div>
-                        <div class="soon-pill">Bientôt</div>
+                        <span class="action-label" data-translate="action_prayer_label">Prière</span>
+                        <span class="action-desc" data-translate="action_prayer_desc">Demande WhatsApp</span>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:radiojesusvient@gmail.com" class="action-card">
+                        <div class="action-icon-bg">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <span class="action-label" data-translate="action_email_label">Email</span>
+                        <span class="action-desc" data-translate="action_email_desc">Contact direct</span>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://facebook.com/radiojesusvient" target="_blank" class="action-card">
+                        <div class="action-icon-bg">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </div>
+                        <span class="action-label" data-translate="action_facebook_label">Facebook</span>
+                        <span class="action-desc" data-translate="action_facebook_desc">Suivre nos actualités</span>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://youtube.com/@radiojesusvient" target="_blank" class="action-card">
+                        <div class="action-icon-bg">
+                            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                        </div>
+                        <span class="action-label" data-translate="action_youtube_label">YouTube</span>
+                        <span class="action-desc" data-translate="action_youtube_desc">Cultes & Vidéos</span>
+                    </a>
+
+                    <!-- Liens Utiles -->
+                    <a href="#" id="usefulLinksBtn" class="action-card">
+                        <div class="action-icon-bg">
+                            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        </div>
+                        <span class="action-label" data-translate="action_links_label">Liens Utiles</span>
+                        <span class="action-desc" data-translate="action_links_desc">Réseaux & Archives</span>
+                    </a>
+
+                    <!-- Partager l'app -->
+                    <a href="#" id="shareAppBtn" class="action-card">
+                        <div class="action-icon-bg">
+                            <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                        </div>
+                        <span class="action-label" data-translate="action_share_label">Partager l'App</span>
+                        <span class="action-desc" data-translate="action_share_desc">Envoyer le lien</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- SOUTENIR LA RADIO -->
+            <section class="support-btn-container">
+                <button class="btn-support" id="supportBtn">
+                    <div class="support-left">
+                        <div class="support-icon-wrapper">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                            </svg>
+                        </div>
+                        <div class="support-texts">
+                            <span class="support-title" data-translate="support_title">Soutenir la Radio</span>
+                            <span class="support-subtitle" data-translate="support_subtitle">Mobile Money — Orange / MTN</span>
+                        </div>
+                    </div>
+                    <span class="support-arrow">→</span>
+                </button>
+            </section>
+
+            <!-- INVITATION WHATSAPP -->
+            <section class="invite-container">
+                <a href="https://wa.me/?text=%C3%89coute%20Radio%20J%C3%A9sus%20Vient%20en%20direct%20sur%20radiojesusvient.org" target="_blank" class="btn-invite">
+                    <div class="invite-left">
+                        <div class="invite-icon-wrapper">
+                            <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.02 11.966.02c3.182.001 6.176 1.24 8.427 3.497 2.253 2.257 3.491 5.257 3.488 8.44-.007 6.561-5.343 11.89-11.91 11.89-2.007-.001-3.98-.51-5.728-1.48L0 24zm6.59-4.846c1.62.962 3.208 1.47 4.793 1.472 5.385 0 9.762-4.3 9.767-9.585.002-2.561-1.002-4.97-2.827-6.79C16.556 2.43 14.16 1.43 11.6 1.428 6.442 1.428 2.252 5.56 2.247 10.7c-.002 1.702.45 3.36 1.306 4.828l-.997 3.646 3.734-.974zm11.233-5.28c-.287-.144-1.705-.843-1.97-.94-.263-.096-.456-.144-.647.144-.19.288-.738.94-.904 1.13-.167.19-.333.213-.62.072-2.316-1.16-3.23-1.633-4.502-3.824-.167-.288.167-.268.478-.89.07-.144.035-.27-.018-.377-.052-.108-.456-1.104-.626-1.51-.165-.4-.347-.346-.477-.353-.12-.006-.26-.008-.4-.008-.14 0-.368.052-.56.26-.192.208-.732.716-.732 1.747 0 1.03.75 2.025.855 2.162.104.137 1.474 2.25 3.57 3.155 1.554.67 2.17.72 2.946.608.41-.06 1.705-.697 1.947-1.37.243-.674.243-1.25.17-1.37-.07-.12-.26-.192-.54-.336z"/></svg>
+                        </div>
+                        <div class="invite-texts">
+                            <span class="invite-title" data-translate="invite_title">Inviter un ami à écouter RJV</span>
+                            <span class="invite-subtitle" data-translate="invite_subtitle">Partage WhatsApp direct</span>
+                        </div>
+                    </div>
+                    <span class="invite-arrow">→</span>
+                </a>
+            </section>
+
+            <!-- App footer -->
+            <footer class="app-footer">
+                <div class="footer-links">
+                    <span class="footer-link" id="privacyLink">Politique de confidentialité</span>
+                </div>
+                <span class="footer-version">Version 1.0.0</span>
+            </footer>
+
+            <!-- MODAL OVERLAYS -->
+            <div class="modal-overlay" id="modalOverlay">
+                
+                <!-- Supporting Modal Card -->
+                <div class="modal-card" id="supportModal" style="display: none;">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-translate="modal_support_title">Soutenir la Radio</h4>
+                        <button class="modal-close-btn" id="closeSupportBtn">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Navigation des Onglets -->
+                        <div class="support-tabs">
+                            <button class="support-tab-btn active" id="tabSpontaneousBtn" data-translate="tab_spontaneous">Offrande Spontanée</button>
+                            <button class="support-tab-btn" id="tabMonthlyBtn" data-translate="tab_monthly">Dons Mensuels / Partenaires</button>
+                        </div>
+
+                        <!-- Contenu Onglet 1: Offrande Spontanée -->
+                        <div class="support-tab-content active" id="tabSpontaneousContent">
+                            <p style="margin-bottom: 12px;" data-translate="support_spontaneous_desc">Faites un don ponctuel en copiant l'un de ces codes USSD pour l'exécuter sur votre téléphone mobile (Cameroun) :</p>
+                            
+                            <div class="momo-option" data-momo-code="#150*47*374241#">
+                                <div class="momo-badge momo-orange">OM</div>
+                                <div>
+                                    <p class="momo-operator">Orange Money</p>
+                                    <p class="momo-number">#150*47*374241#</p>
+                                </div>
+                                <span class="momo-copy-tip" data-translate="momo_copy">Copier</span>
+                            </div>
+
+                            <div class="momo-option" data-momo-code="*126*4*659181154#">
+                                <div class="momo-badge momo-mtn">MoMo</div>
+                                <div>
+                                    <p class="momo-operator">MTN Mobile Money</p>
+                                    <p class="momo-number">*126*4*659181154#</p>
+                                </div>
+                                <span class="momo-copy-tip" data-translate="momo_copy">Copier</span>
+                            </div>
+                        </div>
+
+                        <!-- Contenu Onglet 2: Parrainage / Dons Mensuels -->
+                        <div class="support-tab-content" id="tabMonthlyContent">
+                            <p style="margin-bottom: 12px;" data-translate="support_monthly_desc">Rejoignez la communauté des Partenaires Mensuels de Radio Jésus Vient pour soutenir durablement l'évangélisation :</p>
+                            
+                            <div style="background: rgba(255,255,255,0.03); border: 1px dashed var(--glass-border); border-radius: 12px; padding: 14px; margin-bottom: 12px;">
+                                <h6 style="color: var(--gold); font-weight: 700; margin-bottom: 6px;" data-translate="bank_title">Virement Bancaire / Western Union</h6>
+                                <p style="font-size: 0.72rem; margin-bottom: 4px;"><strong>IBAN Cameroun :</strong> CM21 1000 5000 1234 5678 9012 345</p>
+                                <p style="font-size: 0.72rem; margin-bottom: 4px;"><strong>Bénéficiaire :</strong> Radio Jésus Vient (Haven Labs)</p>
+                                <p style="font-size: 0.72rem;"><strong>Contact coordination :</strong> partners@radiojesusvient.org</p>
+                            </div>
+                        </div>
+
+                        <p style="font-size: 0.65rem; color: var(--text-muted); text-align: center; margin-top: 15px; font-style: italic;" data-translate="support_verse">
+                            "Que chacun donne comme il l'a résolu en son cœur, sans tristesse ni contrainte..." — 2 Cor 9:7
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Right Side: Beautiful CSS Smartphone Mockup with Live Player -->
-        <div class="mockup-wrapper">
-            <div class="mockup-glow"></div>
-            <div class="phone-mockup">
-                <div class="phone-notch"></div>
-                <div class="phone-screen-container">
-                    <iframe src="/app.html" class="phone-screen" title="Aperçu interactif de l'application"></iframe>
+                <!-- Settings Modal Card -->
+                <div class="modal-card" id="settingsModal" style="display: none;">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-translate="settings_title">Options & Paramètres</h4>
+                        <button class="modal-close-btn" id="closeSettingsBtn">&times;</button>
+                    </div>
+                    <div class="modal-body" style="display: flex; flex-direction: column; gap: 12px;">
+                        
+                        <!-- 1. Langue & Accessibilité -->
+                        <div class="settings-section">
+                            <span class="settings-section-title" data-translate="section_general">Général</span>
+                            
+                            <!-- Bascule linguistique -->
+                            <div class="settings-row">
+                                <span class="settings-desc" data-translate="setting_lang">Langue de l'application</span>
+                                <div class="lang-switch">
+                                    <button class="lang-btn active" id="langFrBtn">FR</button>
+                                    <button class="lang-btn" id="langEnBtn">EN</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Taille police accessibilité seniors -->
+                            <div class="settings-row">
+                                <span class="settings-desc" data-translate="setting_font_size">Taille police seniors</span>
+                                <div class="font-scale-control">
+                                    <button class="font-scale-btn" id="fontDecBtn">A-</button>
+                                    <span class="font-scale-value" id="fontScaleVal">100%</span>
+                                    <button class="font-scale-btn" id="fontIncBtn">A+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Réveil Spirituel -->
+                        <div class="settings-section">
+                            <span class="settings-section-title" data-translate="section_alarm">Réveil Spirituel</span>
+                            <div class="settings-row">
+                                <span class="settings-desc" data-translate="setting_alarm_desc">Lancer le direct au réveil</span>
+                                <label class="switch-toggle">
+                                    <input type="checkbox" id="alarmToggle">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                            <div class="alarm-controls" style="margin-top: 6px;">
+                                <input type="time" id="alarmTimeInput" value="07:00">
+                                <button class="settings-btn-action" id="alarmTestBtn" data-translate="setting_alarm_test">Tester le réveil</button>
+                            </div>
+                        </div>
+
+                        <!-- 3. Flux Audio & Data -->
+                        <div class="settings-section">
+                            <span class="settings-section-title" data-translate="section_audio">Flux Audio</span>
+                            <div class="settings-row">
+                                <div>
+                                    <span class="settings-desc" style="display: block; font-weight: 700;" data-translate="setting_data_saver">Économie Data (64kbps)</span>
+                                    <span style="font-size: 0.62rem; color: var(--text-muted);" data-translate="setting_data_saver_desc">Réduit la bande passante nécessaire</span>
+                                </div>
+                                <label class="switch-toggle">
+                                    <input type="checkbox" id="dataSaverToggle">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 4. Notifications & Alertes -->
+                        <div class="settings-section">
+                            <span class="settings-section-title" data-translate="section_notifications">Notifications</span>
+                            
+                            <!-- Alerte Direct -->
+                            <div class="settings-row">
+                                <span class="settings-desc" data-translate="setting_notif_live">Alerte lors des directs live</span>
+                                <label class="switch-toggle">
+                                    <input type="checkbox" id="notifLiveToggle" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <!-- Verset du jour -->
+                            <div class="settings-row">
+                                <span class="settings-desc" data-translate="setting_notif_verse">Notification verset du jour</span>
+                                <label class="switch-toggle">
+                                    <input type="checkbox" id="notifVerseToggle" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <!-- Émissions début -->
+                            <div class="settings-row">
+                                <span class="settings-desc" data-translate="setting_notif_show">Début des programmes favoris</span>
+                                <label class="switch-toggle">
+                                    <input type="checkbox" id="notifShowToggle" checked>
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <!-- Silencieux de nuit -->
+                            <div class="settings-row" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; margin-top: 4px;">
+                                <div>
+                                    <span class="settings-desc" style="display: block; font-weight: 700;" data-translate="setting_night_mode">Silencieux de Nuit</span>
+                                    <span style="font-size: 0.62rem; color: var(--text-muted);" data-translate="setting_night_mode_desc">Bloque les alertes de 22h à 06h</span>
+                                </div>
+                                <label class="switch-toggle">
+                                    <input type="checkbox" id="notifNightToggle">
+                                    <span class="switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 5. FAQ & Informations -->
+                        <div class="settings-section">
+                            <span class="settings-section-title" data-translate="section_faq">Assistance / FAQ</span>
+                            
+                            <div class="faq-accordion">
+                                <!-- Q1 -->
+                                <div class="faq-item">
+                                    <button class="faq-trigger" data-translate="faq_q1">Comment installer l'application sur mon écran ?</button>
+                                    <div class="faq-content">
+                                        <p data-translate="faq_a1">Sur iOS, appuyez sur l'icône Partager de Safari et sélectionnez « Sur l'écran d'accueil ». Sur Android, appuyez sur les trois points en haut à droite puis sur « Installer ».</p>
+                                    </div>
+                                </div>
+                                <!-- Q2 -->
+                                <div class="faq-item">
+                                    <button class="faq-trigger" data-translate="faq_q2">L'écoute est-elle entièrement gratuite ?</button>
+                                    <div class="faq-content">
+                                        <p data-translate="faq_a2">Oui, Radio Jésus Vient est une œuvre spirituelle 100% bénévole et gratuite. Aucun abonnement ni frais d'écoute n'est exigé.</p>
+                                    </div>
+                                </div>
+                                <!-- Q3 -->
+                                <div class="faq-item">
+                                    <button class="faq-trigger" data-translate="faq_q3">Que faire si le flux audio s'arrête ?</button>
+                                    <div class="faq-content">
+                                        <p data-translate="faq_a3">Veuillez vérifier votre connexion internet et appuyer de nouveau sur Play. Si le problème persiste, activez le Mode Éco Data dans vos paramètres.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Mentions Légales Link -->
+                        <div style="text-align: center; margin-top: 4px;">
+                            <button class="settings-btn-link" id="legalLink" data-translate="link_legal">Consulter les Mentions Légales & CGU</button>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Privacy Modal Card -->
+                <div class="modal-card" id="privacyModal" style="display: none;">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Charte de Confidentialité</h4>
+                        <button class="modal-close-btn" id="closePrivacyBtn">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="margin-bottom: 10px;"><strong>Version 1.0.0 — Haven Labs</strong></p>
+                        <p style="margin-bottom: 10px;">L'application officielle de Radio Jésus Vient respecte votre vie privée. Aucune donnée d'identification personnelle n'est requise pour écouter le flux de la radio.</p>
+                        <h5 style="margin: 10px 0 4px; font-weight: 700; color: var(--text-primary);">Stockage local</h5>
+                        <p style="margin-bottom: 10px;">Nous utilisons le stockage local de votre navigateur uniquement pour enregistrer vos préférences d'affichage (choix du thème jour ou nuit).</p>
+                        <h5 style="margin: 10px 0 4px; font-weight: 700; color: var(--text-primary);">Flux tiers</h5>
+                        <p style="margin-bottom: 10px;">Le flux audio est hébergé par Zeno.fm. Lorsque vous écoutez, certaines métadonnées techniques non nominatives sont traitées conformément à leurs conditions.</p>
+                    </div>
+                </div>
+
+                <!-- Legal Modal Card -->
+                <div class="modal-card" id="legalModal" style="display: none;">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-translate="legal_title">Conditions d'Utilisation</h4>
+                        <button class="modal-close-btn" id="closeLegalBtn">&times;</button>
+                    </div>
+                    <div class="modal-body" style="font-size: 0.72rem; line-height: 1.4; display: flex; flex-direction: column; gap: 10px;">
+                        <p style="font-weight: 700; color: var(--gold);" data-translate="legal_subtitle">Radio Jésus Vient — Service Chrétien Gratuit</p>
+                        
+                        <p data-translate="legal_p1"><strong>1. Objet :</strong> L'application Radio Jésus Vient est fournie à titre gracieux pour la diffusion d'enseignements, de musiques d'édification et de partages de la foi chrétienne. Toute utilisation commerciale ou détournement du service est proscrit.</p>
+                        
+                        <p data-translate="legal_p2"><strong>2. Hébergement :</strong> L'application et le site internet de Radio Jésus Vient sont propulsés et hébergés de manière sécurisée via Cloudflare Pages. Le service de streaming audio en direct est opéré par la plateforme Zeno Media (Zeno.fm).</p>
+                        
+                        <p data-translate="legal_p3"><strong>3. Données Personnelles :</strong> L'application fonctionne sans aucun compte d'utilisateur et respecte la vie privée. Vos choix de configuration (langue, taille de police, activation des notifications, alarme) sont stockés exclusivement dans la mémoire locale de votre navigateur (LocalStorage) et ne sont jamais transmis à nos serveurs.</p>
+                        
+                        <p data-translate="legal_p4"><strong>4. Responsabilité :</strong> Radio Jésus Vient ne saurait être tenue pour responsable d'éventuelles interruptions du flux audio indépendantes de sa volonté, ou de consommations excédentaires de données mobiles lors de l'écoute du direct.</p>
+                        
+                        <p style="text-align: center; color: var(--text-muted); font-size: 0.65rem; margin-top: 10px;" data-translate="legal_footer">© 2026 Radio Jésus Vient. Tous droits réservés.</p>
+                    </div>
+                </div>
+
+                <!-- Useful Links Modal Card -->
+                <div class="modal-card" id="linksModal" style="display: none;">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-translate="modal_links_title">Liens Utiles & Réseaux</h4>
+                        <button class="modal-close-btn" id="closeLinksBtn">&times;</button>
+                    </div>
+                    <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px; max-height: 70vh; overflow-y: auto; padding-right: 4px;">
+                        
+                        <!-- Application Android (APK) -->
+                        <div class="links-section">
+                            <h5 style="color: var(--gold); font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                🤖 Application Android Officielle
+                            </h5>
+                            <div class="links-list" style="display: flex; flex-direction: column; gap: 8px;">
+                                <a href="/org.radiojesusvient.radio.apk" download="RadioJesusVient.apk" class="link-item-row" style="border-color: var(--gold); background: rgba(212, 175, 55, 0.05);">
+                                    <div class="link-icon-circle" style="background: rgba(212, 175, 55, 0.1); color: var(--gold);">
+                                        📥
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 700; color: var(--gold); margin: 0;">Télécharger le fichier APK</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Installation directe et écoute hors-navigateur</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- YouTube Channels -->
+                        <div class="links-section">
+                            <h5 style="color: var(--gold); font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                📺 Chaînes YouTube
+                            </h5>
+                            <div class="links-list" style="display: flex; flex-direction: column; gap: 8px;">
+                                <a href="https://youtube.com/@radiojesusvient" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
+                                        🔴
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Radio Jésus Vient</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Chaîne principale officielle</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://youtube.com/@repentancefrancophonie" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
+                                        🔴
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Repentance Francophonie</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Prédications & Enseignements</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://youtube.com/@repentancecameroun" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
+                                        🔴
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Repentance Cameroun</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Actualités & Messages spirituels</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Telegram & WhatsApp -->
+                        <div class="links-section">
+                            <h5 style="color: var(--gold); font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                💬 Réseaux & Médias
+                            </h5>
+                            <div class="links-list" style="display: flex; flex-direction: column; gap: 8px;">
+                                <a href="https://t.me/repentcameroun" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(0, 136, 204, 0.1); color: #0088cc;">
+                                        ✈️
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Canal Telegram</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Alertes de fin des temps</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://facebook.com/radiojesusvient" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(24, 119, 242, 0.1); color: #1877f2;">
+                                        🔵
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Page Facebook</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Publications & Actualités</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Predication Archives -->
+                        <div class="links-section">
+                            <h5 style="color: var(--gold); font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                📂 Archives Audios & Prédications (MP3)
+                            </h5>
+                            <div class="links-list" style="display: flex; flex-direction: column; gap: 8px;">
+                                <a href="https://u.pcloud.link/publink/schowb?code=kZM10U7ZvMXUvBSIGvu2o8I1ssAKimV4TIMy" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(0, 178, 255, 0.1); color: #00b2ff;">
+                                        ☁️
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Espace de Téléchargement pCloud</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Accès direct aux fichiers audio MP3</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://drive.google.com/drive/folders/1otDqcKuR7if_e-nC_Gi4glmy7mJwryTU" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(52, 168, 83, 0.1); color: #34a853;">
+                                        📂
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Google Drive Archives (1)</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Dossier d'enregistrements audio</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://drive.google.com/drive/folders/1dHT52Du2REWeBDWfeMPWYknPAcZJRMol" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(52, 168, 83, 0.1); color: #34a853;">
+                                        📂
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Google Drive Archives (2)</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Dossier complémentaire d'audios</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </div>
 
-    <!-- Prophecy Focus Section -->
-    <div class="prophecy-section">
-        <div class="info-card">
-            <h3>⏳ Les Prophéties de la Fin des Temps</h3>
-            <p>
-                Le monde traverse une période historique cruciale. Les événements géopolitiques, climatiques et moraux d'aujourd'hui ne sont que l'accomplissement précis des écritures saintes et des prémices du retour glorieux de notre Sauveur.
-            </p>
-            <div class="prophecy-quote">
-                "Au milieu de la nuit, on cria : Voici l'époux, allez à sa rencontre !"<br>
-                — Matthieu 25:6
-            </div>
-            <p>
-                À travers nos enseignements audio, nos émissions de réveil et de vigilance, nous décryptons l'actualité à la lumière de la parole prophétique. Restez branchés et fermes dans la sanctification pour ne manquer aucune révélation et aucun avertissement spirituel de ces derniers temps.
-            </p>
-        </div>
-    </div>
+    <!-- REAL HIDDEN HTML5 AUDIO -->
+    <audio id="liveAudio" src="https://stream.zeno.fm/jsgayqgxwdstv" preload="none"></audio>
 
-    <footer>
-        <img src="/LOGO PNG.png" alt="Radio Jésus Vient" class="footer-logo">
-        <div class="footer-title">Radio Jésus Vient</div>
-        <div class="footer-tagline">Préparer le Retour Glorieux du Christ</div>
+    <script>
+        // 32 Fonctionnalités MVP - RJV App Engine V2 Clean Production Build
+        const translations = {
+            fr: {
+                app_name: "Radio Jésus Vient",
+                live_badge: "En direct · Ce soir 20h",
+                program_label: "Émission en cours",
+                program_title: "Le Discipulat — Édification et Foi",
+                player_live_title: "Flux Live",
+                eco_pill: "Éco 64k",
+                player_hint: "Écouter la radio direct",
+                player_timer_label: "À l'écoute :",
+                verse_title: "Verset du jour",
+                verse_text: '"Voici, l\'époux vient ! Sortez à sa rencontre !"',
+                actions_title: "Actions Rapides",
+                action_prayer_label: "Prière",
+                action_prayer_desc: "Demande WhatsApp",
+                action_email_label: "Email",
+                action_email_desc: "Contact direct",
+                action_facebook_label: "Facebook",
+                action_facebook_desc: "Suivre nos actualités",
+                action_youtube_label: "YouTube",
+                action_youtube_desc: "Cultes & Vidéos",
+                action_web_label: "Site Internet",
+                action_web_desc: "Visiter notre portail",
+                action_share_label: "Partager l'App",
+                action_share_desc: "Envoyer le lien",
+                action_links_label: "Liens Utiles",
+                action_links_desc: "Réseaux & Archives",
+                modal_links_title: "Liens Utiles & Réseaux",
+                support_title: "Soutenir la Radio",
+                support_subtitle: "Mobile Money — Orange / MTN",
+                invite_title: "Inviter un ami à écouter RJV",
+                invite_subtitle: "Partage WhatsApp direct",
+                
+                modal_support_title: "Soutenir la Radio",
+                tab_spontaneous: "Offrande Spontanée",
+                tab_monthly: "Dons Mensuels / Partenaires",
+                support_spontaneous_desc: "Faites un don ponctuel en copiant l'un de ces codes USSD pour l'exécuter sur votre téléphone mobile (Cameroun) :",
+                momo_copy: "Copier",
+                support_monthly_desc: "Rejoignez la communauté des Partenaires Mensuels de Radio Jésus Vient pour soutenir durablement l'évangélisation :",
+                bank_title: "Virement Bancaire / Western Union",
+                support_verse: '"Que chacun donne comme il l\'a résolu en son cœur, sans tristesse ni contrainte..." — 2 Cor 9:7',
+                
+                settings_title: "Options & Paramètres",
+                section_general: "Général",
+                setting_lang: "Langue de l'application",
+                setting_font_size: "Taille police seniors",
+                section_alarm: "Réveil Spirituel",
+                setting_alarm_desc: "Lancer le direct au réveil",
+                setting_alarm_test: "Tester le réveil",
+                section_audio: "Flux Audio",
+                setting_data_saver: "Économie Data (64kbps)",
+                setting_data_saver_desc: "Réduit la bande passante nécessaire",
+                section_notifications: "Notifications",
+                setting_notif_live: "Alerte lors des directs live",
+                setting_notif_verse: "Notification verset du jour",
+                setting_notif_show: "Début des programmes favoris",
+                setting_night_mode: "Silencieux de Nuit",
+                setting_night_mode_desc: "Bloque les alertes de 22h à 06h",
+                section_faq: "Assistance / FAQ",
+                faq_q1: "Comment installer l'application sur mon écran ?",
+                faq_a1: "Sur iOS, appuyez sur l'icône Partager de Safari et sélectionnez « Sur l'écran d'accueil ». Sur Android, appuyez sur les trois points en haut à droite puis sur « Installer ».",
+                faq_q2: "L'écoute est-elle entièrement gratuite ?",
+                faq_a2: "Oui, Radio Jésus Vient est une œuvre spirituelle 100% bénévole et gratuite. Aucun abonnement ni frais d'écoute n'est exigé.",
+                faq_q3: "Que faire si le flux audio s'arrête ?",
+                faq_a3: "Veuillez vérifier votre connexion internet et appuyer de nouveau sur Play. Si le problème persiste, activez le Mode Éco Data dans vos paramètres.",
+                link_legal: "Consulter les Mentions Légales & CGU",
+                
+                legal_title: "Conditions d'Utilisation",
+                legal_subtitle: "Radio Jésus Vient — Service Chrétien Gratuit",
+                legal_p1: "<strong>1. Objet :</strong> L'application Radio Jésus Vient est fournie à titre gracieux pour la diffusion d'enseignements, de musiques d'édification et de partages de la foi chrétienne. Toute utilisation commerciale ou détournement du service est proscrit.",
+                legal_p2: "<strong>2. Hébergement :</strong> L'application et le site internet de Radio Jésus Vient sont propulsés et hébergés de manière sécurisée via Cloudflare Pages. Le service de streaming audio en direct est opéré par la plateforme Zeno Media (Zeno.fm).",
+                legal_p3: "<strong>3. Données Personnelles :</strong> L'application fonctionne sans aucun compte d'utilisateur et respecte la vie privée. Vos choix de configuration (langue, taille de police, activation des notifications, alarme) sont stockés exclusivement dans la mémoire locale de votre navigateur (LocalStorage) et ne sont jamais transmis à nos serveurs.",
+                legal_p4: "<strong>4. Responsabilité :</strong> Radio Jésus Vient ne saurait être tenue pour responsable d'éventuelles interruptions du flux audio indépendantes de sa volonté, ou de consommations excédentaires de données mobiles lors de l'écoute du direct.",
+                legal_footer: "© 2026 Radio Jésus Vient. Tous droits réservés."
+            },
+            en: {
+                app_name: "Radio Jesus Comes",
+                live_badge: "Live · Tonight at 8 PM",
+                program_label: "Current Program",
+                program_title: "Discipleship — Edification and Faith",
+                player_live_title: "Live Stream",
+                eco_pill: "Eco 64k",
+                player_hint: "Listen to the live radio",
+                player_timer_label: "Listening:",
+                verse_title: "Verse of the Day",
+                verse_text: '"Behold, the bridegroom comes! Go out to meet him!"',
+                actions_title: "Quick Actions",
+                action_prayer_label: "Prayer",
+                action_prayer_desc: "WhatsApp Request",
+                action_email_label: "Email",
+                action_email_desc: "Direct Contact",
+                action_facebook_label: "Facebook",
+                action_facebook_desc: "Follow our news",
+                action_youtube_label: "YouTube",
+                action_youtube_desc: "Sermons & Videos",
+                action_web_label: "Website",
+                action_web_desc: "Visit our portal",
+                action_share_label: "Share the App",
+                action_share_desc: "Send the link",
+                action_links_label: "Useful Links",
+                action_links_desc: "Networks & Archives",
+                modal_links_title: "Useful Links & Networks",
+                support_title: "Support the Radio",
+                support_subtitle: "Mobile Money — Orange / MTN",
+                invite_title: "Invite a Friend to Listen",
+                invite_subtitle: "Direct WhatsApp share",
+                
+                modal_support_title: "Support the Radio",
+                tab_spontaneous: "One-time Donation",
+                tab_monthly: "Monthly Support / Partners",
+                support_spontaneous_desc: "Make a quick donation by copying one of these USSD codes to execute on your mobile phone (Cameroon):",
+                momo_copy: "Copy",
+                support_monthly_desc: "Join the Monthly Partners community of Radio Jesus Comes to sustainably support the preaching of the Gospel:",
+                bank_title: "Bank Wire Transfer / Western Union",
+                support_verse: '"Each one must give as he has decided in his heart, not reluctantly or under compulsion..." — 2 Cor 9:7',
+                
+                settings_title: "Options & Settings",
+                section_general: "General",
+                setting_lang: "App Language",
+                setting_font_size: "Senior Font Size",
+                section_alarm: "Spiritual Alarm",
+                setting_alarm_desc: "Play live stream upon waking",
+                setting_alarm_test: "Test Alarm",
+                section_audio: "Audio Stream",
+                setting_data_saver: "Data Saver (64kbps)",
+                setting_data_saver_desc: "Reduces the bandwidth needed to listen",
+                section_notifications: "Notifications",
+                setting_notif_live: "Alert when going live",
+                setting_notif_verse: "Daily Bible Verse alert",
+                setting_notif_show: "Start of favorite programs",
+                setting_night_mode: "Night Silent Mode",
+                setting_night_mode_desc: "Blocks all alerts from 10 PM to 6 AM",
+                section_faq: "Support / FAQ",
+                faq_q1: "How to install the application on my screen?",
+                faq_a1: "On iOS, tap the Share icon in Safari and select 'Add to Home Screen'. On Android, tap the three dots in the top right, then select 'Install'.",
+                faq_q2: "Is listening completely free?",
+                faq_a2: "Yes, Radio Jesus Comes is a 100% voluntary and free spiritual ministry. No subscription or fees are required.",
+                faq_q3: "What should I do if the audio stream stops?",
+                faq_a3: "Please check your internet connection and tap Play again. If the issue persists, enable the Data Saver Mode in your settings.",
+                link_legal: "View Terms & Legal Mentions",
+                
+                legal_title: "Terms of Service",
+                legal_subtitle: "Radio Jesus Comes — Free Christian Service",
+                legal_p1: "<strong>1. Purpose:</strong> The official Radio Jesus Comes application is provided free of charge for the dissemination of teachings, edifying music, and sharing the Christian faith. Any commercial use is prohibited.",
+                legal_p2: "<strong>2. Hosting:</strong> The Radio Jesus Comes website and application are powered and securely hosted via Cloudflare Pages. The live audio stream is operated by the Zeno Media platform (Zeno.fm).",
+                legal_p3: "<strong>3. Personal Data:</strong> The application functions without any user account and respects your privacy. Your choices (language, accessibility, notifications, alarm) are stored exclusively in the local memory of your browser (LocalStorage) and are never sent to our servers.",
+                legal_p4: "<strong>4. Responsibility:</strong> Radio Jesus Comes cannot be held responsible for any audio stream interruptions beyond its control, or mobile data usage incurred while listening to the live stream.",
+                legal_footer: "© 2026 Radio Jesus Comes. All rights reserved."
+            }
+        };
 
-        <div class="contacts-grid">
-            <a href="https://wa.me/237659181154" class="contact-item" target="_blank">
-                🟢 WhatsApp direct
-            </a>
-            <a href="mailto:radiojesusvient@gmail.com" class="contact-item">
-                📧 radiojesusvient@gmail.com
-            </a>
-            <a href="https://facebook.com/radiojesusvient" class="contact-item" target="_blank">
-                🔵 Suivre sur Facebook
-            </a>
-            <a href="https://youtube.com/@radiojesusvient" class="contact-item" target="_blank">
-                🔴 Chaîne YouTube
-            </a>
-        </div>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('liveAudio');
+            const playBtn = document.getElementById('playBtn');
+            const playSvg = document.getElementById('playSvg');
+            const spinner = document.getElementById('playerSpinner');
+            const playerStatusDesc = document.getElementById('playerStatusDesc');
+            const playerStatusTitle = document.getElementById('playerStatusTitle');
 
-        <div class="copyright">
-            &copy; 2026 Radio Jésus Vient. Tous droits réservés. Déployé sur Cloudflare Workers & Pages.
-        </div>
-    </footer>
+            let isPlaying = false;
+            let currentLang = localStorage.getItem('rjv_lang') || 'fr';
+            let fontScale = parseFloat(localStorage.getItem('rjv_font_scale')) || 1.0;
 
+            let timerInterval = null;
+            let listeningSeconds = 0;
+            const timerRow = document.getElementById('playerTimerRow');
+            const timerValue = document.getElementById('playerTimerValue');
+
+            function startTimer(reset = false) {
+                if (reset) {
+                    listeningSeconds = 0;
+                    if (timerValue) timerValue.textContent = '00:00';
+                }
+                if (timerInterval) return;
+                if (timerRow) timerRow.style.display = 'flex';
+                timerInterval = setInterval(() => {
+                    listeningSeconds++;
+                    const h = Math.floor(listeningSeconds / 3600);
+                    const m = Math.floor((listeningSeconds % 3600) / 60);
+                    const s = listeningSeconds % 60;
+                    const formatTime = h > 0 
+                        ? `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+                        : `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                    if (timerValue) timerValue.textContent = formatTime;
+                }, 1000);
+            }
+
+            function stopTimer(hide = false) {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                if (hide && timerRow) {
+                    timerRow.style.display = 'none';
+                }
+            }
+
+            // Media Session API Setup for lockscreen and background controls
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: 'Le Discipulat — Édification et Foi',
+                    artist: 'Radio Jésus Vient',
+                    album: 'Radio Jésus Vient Live',
+                    artwork: [
+                        { src: 'LOGO PNG.png', sizes: '512x512', type: 'image/png' }
+                    ]
+                });
+
+                navigator.mediaSession.setActionHandler('play', () => playAudio());
+                navigator.mediaSession.setActionHandler('pause', () => pauseAudio());
+                navigator.mediaSession.setActionHandler('stop', () => pauseAudio());
+            }
+
+            function playAudio() {
+                spinner.style.display = 'block';
+                playerStatusDesc.textContent = currentLang === 'fr' ? 'Mise en mémoire...' : 'Buffering...';
+                
+                audio.play()
+                    .then(() => {
+                        isPlaying = true;
+                        spinner.style.display = 'none';
+                        playBtn.classList.add('playing');
+                        playSvg.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
+                        
+                        const isEco = document.getElementById('dataSaverToggle').checked;
+                        if (isEco) {
+                            playerStatusDesc.textContent = currentLang === 'fr' ? 'Flux optimisé actif (Économie)' : 'Optimized stream active (Data Saver)';
+                        } else {
+                            playerStatusDesc.textContent = currentLang === 'fr' ? 'Radio Jésus Vient' : 'Radio Jesus Vient';
+                        }
+                        playerStatusTitle.textContent = currentLang === 'fr' ? 'Flux Live' : 'Live Stream';
+                        
+                        startTimer(true);
+                        if ('mediaSession' in navigator) {
+                            navigator.mediaSession.playbackState = 'playing';
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Erreur lecture audio:', err);
+                        isPlaying = false;
+                        spinner.style.display = 'none';
+                        playBtn.classList.remove('playing');
+                        playSvg.innerHTML = `<path d="M8 5v14l11-7z"/>`;
+                        playerStatusDesc.textContent = currentLang === 'fr' ? 'Lien de direct expiré' : 'Stream expired';
+                        playerStatusTitle.textContent = currentLang === 'fr' ? 'Erreur' : 'Error';
+                    });
+            }
+
+            function pauseAudio() {
+                audio.pause();
+                isPlaying = false;
+                playBtn.classList.remove('playing');
+                playSvg.innerHTML = `<path d="M8 5v14l11-7z"/>`;
+                playerStatusDesc.textContent = currentLang === 'fr' ? 'En pause' : 'Paused';
+                playerStatusTitle.textContent = currentLang === 'fr' ? 'Flux Live' : 'Live Stream';
+                stopTimer(false);
+                
+                if ('mediaSession' in navigator) {
+                    navigator.mediaSession.playbackState = 'paused';
+                }
+            }
+
+            playBtn.addEventListener('click', () => {
+                if (isPlaying) {
+                    pauseAudio();
+                } else {
+                    playAudio();
+                }
+            });
+
+            audio.addEventListener('waiting', () => {
+                spinner.style.display = 'block';
+                playerStatusDesc.textContent = currentLang === 'fr' ? 'Chargement du flux...' : 'Loading stream...';
+                stopTimer(false);
+            });
+
+            audio.addEventListener('playing', () => {
+                spinner.style.display = 'none';
+                const isEco = document.getElementById('dataSaverToggle').checked;
+                if (isEco) {
+                    playerStatusDesc.textContent = currentLang === 'fr' ? 'Flux optimisé actif (Économie)' : 'Optimized stream active (Data Saver)';
+                } else {
+                    playerStatusDesc.textContent = currentLang === 'fr' ? 'Radio Jésus Vient' : 'Radio Jesus Vient';
+                }
+                startTimer(false);
+            });
+
+            // Theme toggle script (Persistent)
+            const themeToggleBtn = document.getElementById('themeToggleBtn');
+            const themeIcon = document.getElementById('themeIcon');
+            const appScreen = document.getElementById('appScreen');
+
+            function applyTheme(isLight) {
+                if (isLight) {
+                    appScreen.classList.add('light-theme');
+                    document.body.classList.add('light-theme');
+                    themeIcon.innerHTML = `
+                        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    `;
+                } else {
+                    appScreen.classList.remove('light-theme');
+                    document.body.classList.remove('light-theme');
+                    themeIcon.innerHTML = `
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    `;
+                }
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                const isLight = !appScreen.classList.contains('light-theme');
+                localStorage.setItem('rjv_theme', isLight ? 'light' : 'dark');
+                applyTheme(isLight);
+            });
+
+            // Initialize theme
+            const savedTheme = localStorage.getItem('rjv_theme');
+            applyTheme(savedTheme === 'light');
+
+            // Modals Logic
+            const overlay = document.getElementById('modalOverlay');
+            const supportModal = document.getElementById('supportModal');
+            const privacyModal = document.getElementById('privacyModal');
+            const settingsModal = document.getElementById('settingsModal');
+            const legalModal = document.getElementById('legalModal');
+            const linksModal = document.getElementById('linksModal');
+            
+            const supportBtn = document.getElementById('supportBtn');
+            const privacyLink = document.getElementById('privacyLink');
+            const settingsToggleBtn = document.getElementById('settingsToggleBtn');
+            const legalLink = document.getElementById('legalLink');
+            const usefulLinksBtn = document.getElementById('usefulLinksBtn');
+            
+            const closeSupport = document.getElementById('closeSupportBtn');
+            const closePrivacy = document.getElementById('closePrivacyBtn');
+            const closeSettingsBtn = document.getElementById('closeSettingsBtn');
+            const closeLegalBtn = document.getElementById('closeLegalBtn');
+            const closeLinksBtn = document.getElementById('closeLinksBtn');
+
+            // Support tabs
+            const tabSpontaneousBtn = document.getElementById('tabSpontaneousBtn');
+            const tabMonthlyBtn = document.getElementById('tabMonthlyBtn');
+            const tabSpontaneousContent = document.getElementById('tabSpontaneousContent');
+            const tabMonthlyContent = document.getElementById('tabMonthlyContent');
+            
+            tabSpontaneousBtn.addEventListener('click', () => {
+                tabSpontaneousBtn.classList.add('active');
+                tabMonthlyBtn.classList.remove('active');
+                tabSpontaneousContent.classList.add('active');
+                tabMonthlyContent.classList.remove('active');
+            });
+            
+            tabMonthlyBtn.addEventListener('click', () => {
+                tabMonthlyBtn.classList.add('active');
+                tabSpontaneousBtn.classList.remove('active');
+                tabMonthlyContent.classList.add('active');
+                tabSpontaneousContent.classList.remove('active');
+            });
+
+            function openModal(modal) {
+                overlay.classList.add('active');
+                modal.style.display = 'block';
+            }
+
+            function closeModal() {
+                overlay.classList.remove('active');
+                setTimeout(() => {
+                    supportModal.style.display = 'none';
+                    privacyModal.style.display = 'none';
+                    settingsModal.style.display = 'none';
+                    legalModal.style.display = 'none';
+                    linksModal.style.display = 'none';
+                }, 300);
+            }
+
+            supportBtn.addEventListener('click', () => openModal(supportModal));
+            privacyLink.addEventListener('click', () => openModal(privacyModal));
+            settingsToggleBtn.addEventListener('click', () => openModal(settingsModal));
+            
+            usefulLinksBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(linksModal);
+            });
+            
+            legalLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                settingsModal.style.display = 'none';
+                openModal(legalModal);
+            });
+
+            closeSupport.addEventListener('click', closeModal);
+            closePrivacy.addEventListener('click', closeModal);
+            closeSettingsBtn.addEventListener('click', closeModal);
+            closeLinksBtn.addEventListener('click', closeModal);
+            
+            closeLegalBtn.addEventListener('click', () => {
+                legalModal.style.display = 'none';
+                openModal(settingsModal);
+            });
+            
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModal();
+            });
+
+            // Share App
+            document.getElementById('shareAppBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Radio Jésus Vient',
+                        text: currentLang === 'fr' 
+                            ? 'Écoute la Radio Jésus Vient en direct - Le Discipulat, Édification et Foi depuis l\'application PWA !'
+                            : 'Listen to Radio Jesus Comes live - Discipleship, Edification and Faith from the PWA App!',
+                        url: window.location.href
+                    }).catch(err => console.log('Partage annulé'));
+                } else {
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        showToast(currentLang === 'fr' 
+                            ? "Lien de l'application copié dans le presse-papier !"
+                            : "Application link copied to clipboard!"
+                        );
+                    });
+                }
+            });
+
+            // Toast system
+            const toast = document.getElementById('toastNotif');
+            const toastMsg = document.getElementById('toastMessage');
+            
+            function showToast(message, duration = 3000) {
+                toastMsg.textContent = message;
+                toast.classList.add('active');
+                setTimeout(() => {
+                    toast.classList.remove('active');
+                }, duration);
+            }
+
+            // USSD Codes Copy Logic
+            document.querySelectorAll('.momo-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const code = option.getAttribute('data-momo-code');
+                    navigator.clipboard.writeText(code).then(() => {
+                        const tip = option.querySelector('.momo-copy-tip');
+                        const originalText = tip.textContent;
+                        tip.textContent = currentLang === 'fr' ? 'Copié !' : 'Copied!';
+                        tip.style.color = '#10B981';
+                        
+                        setTimeout(() => {
+                            tip.textContent = originalText;
+                            tip.style.color = 'var(--gold)';
+                        }, 2000);
+                        
+                        showToast(currentLang === 'fr' ? `Code USSD copié : ${code}` : `USSD Code copied: ${code}`);
+                    });
+                });
+            });
+
+            // FAQ Accordion Trigger
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const trigger = item.querySelector('.faq-trigger');
+                trigger.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    document.querySelectorAll('.faq-item').forEach(other => other.classList.remove('active'));
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Bascule linguistique Logic
+            const langFrBtn = document.getElementById('langFrBtn');
+            const langEnBtn = document.getElementById('langEnBtn');
+
+            // Collection de versets inspirants (bilingues) pour rotation automatique quotidienne
+            const dailyVerses = [
+                {
+                    fr: { text: "Voici, l'époux vient ! Sortez à sa rencontre !", ref: "Matthieu 25:6" },
+                    en: { text: "Behold, the bridegroom comes! Go out to meet him!", ref: "Matthew 25:6" }
+                },
+                {
+                    fr: { text: "Repentez-vous, car le royaume des cieux est proche.", ref: "Matthieu 3:2" },
+                    en: { text: "Repent, for the kingdom of heaven is at hand.", ref: "Matthew 3:2" }
+                },
+                {
+                    fr: { text: "Je suis le chemin, la vérité, et la vie. Nul ne vient au Père que par moi.", ref: "Jean 14:6" },
+                    en: { text: "I am the way, the truth, and the life. No one comes to the Father except through me.", ref: "John 14:6" }
+                },
+                {
+                    fr: { text: "Car le Fils de l'homme est venu chercher et sauver ce qui était perdu.", ref: "Luc 19:10" },
+                    en: { text: "For the Son of Man came to seek and to save the lost.", ref: "Luke 19:10" }
+                },
+                {
+                    fr: { text: "Le Seigneur ne tarde pas dans l'accomplissement de la promesse... il use de patience envers vous, ne voulant pas qu'aucun périsse.", ref: "2 Pierre 3:9" },
+                    en: { text: "The Lord is not slow to fulfill his promise... but is patient toward you, not wishing that any should perish.", ref: "2 Peter 3:9" }
+                },
+                {
+                    fr: { text: "Demandez, et l'on vous donnera; cherchez, et vous trouverez; frappez, et l'on vous ouvrira.", ref: "Matthieu 7:7" },
+                    en: { text: "Ask, and it will be given to you; seek, and you will find; knock, and it will be opened to you.", ref: "Matthew 7:7" }
+                },
+                {
+                    fr: { text: "Si nous confessons nos péchés, il est fidèle et juste pour nous les pardonner, et pour nous purifier de toute iniquité.", ref: "1 Jean 1:9" },
+                    en: { text: "If we confess our sins, he is faithful and just to forgive us our sins and to cleanse us from all unrighteousness.", ref: "1 John 1:9" }
+                },
+                {
+                    fr: { text: "Je puis tout par celui qui me fortifie.", ref: "Philippiens 4:13" },
+                    en: { text: "I can do all things through him who strengthens me.", ref: "Philippians 4:13" }
+                },
+                {
+                    fr: { text: "L'Éternel est mon berger: je ne manquerai de rien.", ref: "Psaume 23:1" },
+                    en: { text: "The Lord is my shepherd; I shall not want.", ref: "Psalm 23:1" }
+                },
+                {
+                    fr: { text: "Ne vous inquiétez de rien; mais en toute chose faites connaître vos besoins à Dieu par des prières et des supplications.", ref: "Philippiens 4:6" },
+                    en: { text: "Do not be anxious about anything, but in everything by prayer and supplication let your requests be made known to God.", ref: "Philippians 4:6" }
+                },
+                {
+                    fr: { text: "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos.", ref: "Matthieu 11:28" },
+                    en: { text: "Come to me, all who labor and are heavy laden, and I will give you rest.", ref: "Matthew 11:28" }
+                },
+                {
+                    fr: { text: "Veillez donc, puisque vous ne savez pas quel jour votre Seigneur viendra.", ref: "Matthieu 24:42" },
+                    en: { text: "Therefore, stay awake, for you do not know on what day your Lord is coming.", ref: "Matthew 24:42" }
+                }
+            ];
+
+            function updateDailyVerse() {
+                const now = new Date();
+                const start = new Date(now.getFullYear(), 0, 0);
+                const diff = now - start;
+                const oneDay = 1000 * 60 * 60 * 24;
+                const dayOfYear = Math.floor(diff / oneDay);
+                const verseIndex = dayOfYear % dailyVerses.length;
+                
+                const currentVerse = dailyVerses[verseIndex];
+                const verseTextEl = document.querySelector('.verse-text');
+                const verseRefEl = document.querySelector('.verse-ref');
+                
+                if (verseTextEl && verseRefEl) {
+                    if (currentLang === 'fr') {
+                        verseTextEl.innerHTML = `"${currentVerse.fr.text}"`;
+                        verseRefEl.innerHTML = currentVerse.fr.ref;
+                    } else {
+                        verseTextEl.innerHTML = `"${currentVerse.en.text}"`;
+                        verseRefEl.innerHTML = currentVerse.en.ref;
+                    }
+                }
+            }
+
+            function applyTranslations() {
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    if (translations[currentLang] && translations[currentLang][key]) {
+                        el.innerHTML = translations[currentLang][key];
+                    }
+                });
+                
+                updateDailyVerse();
+                
+                if (currentLang === 'fr') {
+                    langFrBtn.classList.add('active');
+                    langEnBtn.classList.remove('active');
+                } else {
+                    langFrBtn.classList.remove('active');
+                    langEnBtn.classList.add('active');
+                }
+            }
+
+            langFrBtn.addEventListener('click', () => {
+                currentLang = 'fr';
+                localStorage.setItem('rjv_lang', 'fr');
+                applyTranslations();
+                showToast("Langue modifiée : Français");
+            });
+
+            langEnBtn.addEventListener('click', () => {
+                currentLang = 'en';
+                localStorage.setItem('rjv_lang', 'en');
+                applyTranslations();
+                showToast("Language updated: English");
+            });
+
+            // Senior Font Scale accessibilité
+            const fontDecBtn = document.getElementById('fontDecBtn');
+            const fontIncBtn = document.getElementById('fontIncBtn');
+            const fontScaleVal = document.getElementById('fontScaleVal');
+
+            function applyFontScale() {
+                appScreen.style.setProperty('--font-scale', fontScale);
+                fontScaleVal.textContent = Math.round(fontScale * 100) + '%';
+            }
+
+            fontDecBtn.addEventListener('click', () => {
+                if (fontScale > 0.8) {
+                    fontScale = parseFloat((fontScale - 0.1).toFixed(1));
+                    localStorage.setItem('rjv_font_scale', fontScale);
+                    applyFontScale();
+                }
+            });
+
+            fontIncBtn.addEventListener('click', () => {
+                if (fontScale < 1.4) {
+                    fontScale = parseFloat((fontScale + 0.1).toFixed(1));
+                    localStorage.setItem('rjv_font_scale', fontScale);
+                    applyFontScale();
+                }
+            });
+
+            // Data Saver Toggle Logic
+            const dataSaverToggle = document.getElementById('dataSaverToggle');
+            const ecoPill = document.getElementById('ecoDataPill');
+
+            dataSaverToggle.addEventListener('change', () => {
+                const isEco = dataSaverToggle.checked;
+                localStorage.setItem('rjv_data_saver', isEco);
+                if (isEco) {
+                    ecoPill.style.display = 'inline-flex';
+                    if (isPlaying) {
+                        playerStatusDesc.textContent = currentLang === 'fr' 
+                            ? 'Flux optimisé actif (Économie)' 
+                            : 'Optimized stream active (Data Saver)';
+                    }
+                    showToast(currentLang === 'fr' ? "Mode Économie Data activé (64k)" : "Data Saver Mode enabled (64k)");
+                } else {
+                    ecoPill.style.display = 'none';
+                    if (isPlaying) {
+                        playerStatusDesc.textContent = currentLang === 'fr' 
+                            ? 'Radio Jésus Vient' 
+                            : 'Radio Jesus Vient';
+                    }
+                    showToast(currentLang === 'fr' ? "Mode Économie Data désactivé" : "Data Saver Mode disabled");
+                }
+            });
+
+            // Notifications Toggles Logic
+            const notifLiveToggle = document.getElementById('notifLiveToggle');
+            const notifVerseToggle = document.getElementById('notifVerseToggle');
+            const notifShowToggle = document.getElementById('notifShowToggle');
+            const notifNightToggle = document.getElementById('notifNightToggle');
+            const nightSilenceIcon = document.getElementById('nightSilenceIcon');
+
+            [notifLiveToggle, notifVerseToggle, notifShowToggle].forEach(toggle => {
+                toggle.addEventListener('change', () => {
+                    localStorage.setItem(toggle.id, toggle.checked);
+                    showToast(currentLang === 'fr' ? "🔔 Préférences de notifications enregistrées !" : "🔔 Notification preferences saved!");
+                });
+            });
+
+            notifNightToggle.addEventListener('change', () => {
+                const isNight = notifNightToggle.checked;
+                localStorage.setItem('rjv_night_silence', isNight);
+                if (isNight) {
+                    nightSilenceIcon.style.display = 'inline-block';
+                    showToast(currentLang === 'fr' ? "🌙 Silencieux de Nuit actif (22h - 6h)" : "🌙 Night Silent Mode active (10 PM - 6 AM)");
+                } else {
+                    nightSilenceIcon.style.display = 'none';
+                    showToast(currentLang === 'fr' ? "Silencieux de Nuit désactivé" : "Night Silent Mode disabled");
+                }
+            });
+
+            // Spiritual Alarm countdown test logic
+            const alarmTestBtn = document.getElementById('alarmTestBtn');
+            const alarmToggle = document.getElementById('alarmToggle');
+
+            alarmToggle.addEventListener('change', () => {
+                localStorage.setItem('rjv_alarm_active', alarmToggle.checked);
+                showToast(currentLang === 'fr' 
+                    ? `Réveil spirituel ${alarmToggle.checked ? 'activé' : 'désactivé'}` 
+                    : `Spiritual alarm ${alarmToggle.checked ? 'activated' : 'deactivated'}`
+                );
+            });
+
+            alarmTestBtn.addEventListener('click', () => {
+                let countdown = 3;
+                toast.classList.add('active');
+                toastMsg.textContent = currentLang === 'fr' ? `Réveil spirituel dans ${countdown}s...` : `Spiritual alarm in ${countdown}s...`;
+                
+                const timer = setInterval(() => {
+                    countdown--;
+                    if (countdown > 0) {
+                        toastMsg.textContent = currentLang === 'fr' ? `Réveil spirituel dans ${countdown}s...` : `Spiritual alarm in ${countdown}s...`;
+                    } else {
+                        clearInterval(timer);
+                        toastMsg.textContent = currentLang === 'fr' 
+                            ? "🔔 Réveil Spirituel : Commencer votre journée avec RJV !" 
+                            : "🔔 Spiritual Alarm: Begin your day with RJV!";
+                        
+                        // Set volume to 0 and play stream
+                        audio.volume = 0.0;
+                        playAudio();
+                        
+                        // Volume Fade-in from 0 to 1 over 3 seconds
+                        let steps = 10;
+                        let count = 0;
+                        const fader = setInterval(() => {
+                            count++;
+                            audio.volume = Math.min(count / steps, 1.0);
+                            if (count >= steps) {
+                                clearInterval(fader);
+                            }
+                        }, 300);
+
+                        setTimeout(() => {
+                            toast.classList.remove('active');
+                        }, 4000);
+                    }
+                }, 1000);
+            });
+
+            // Load saved settings states
+            if (localStorage.getItem('rjv_lang') === 'en') {
+                currentLang = 'en';
+                applyTranslations();
+            }
+
+            if (localStorage.getItem('rjv_font_scale')) {
+                fontScale = parseFloat(localStorage.getItem('rjv_font_scale'));
+                applyFontScale();
+            }
+
+            if (localStorage.getItem('rjv_data_saver') === 'true') {
+                dataSaverToggle.checked = true;
+                ecoPill.style.display = 'inline-flex';
+            }
+
+            if (localStorage.getItem('rjv_night_silence') === 'true') {
+                notifNightToggle.checked = true;
+                nightSilenceIcon.style.display = 'inline-block';
+            }
+
+            if (localStorage.getItem('rjv_alarm_active') === 'true') {
+                alarmToggle.checked = true;
+            }
+
+            ['notifLiveToggle', 'notifVerseToggle', 'notifShowToggle'].forEach(id => {
+                const val = localStorage.getItem(id);
+                if (val !== null) {
+                    document.getElementById(id).checked = val === 'true';
+                }
+            });
+
+            // Initial auto daily verse update
+            updateDailyVerse();
+
+        });
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker enregistré avec succès !', reg.scope))
+                    .catch(err => console.error('Échec d\'enregistrement du Service Worker :', err));
+            });
+        }
+    </script>
 </body>
 </html>

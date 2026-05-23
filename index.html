@@ -25,7 +25,7 @@
             --accent-gold: #D4AF37;
             --text-light: #F4F6FC;
             --text-muted: #8E9BB0;
-            --glass-bg: rgba(15, 38, 140, 0.15);
+            --glass-bg: rgba(15, 38, 140, 0.12);
             --glass-border: rgba(255, 255, 255, 0.08);
             --card-glow: rgba(15, 38, 140, 0.35);
         }
@@ -54,7 +54,7 @@
         /* Header / Navbar */
         header {
             width: 100%;
-            padding: 24px 8%;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -76,8 +76,8 @@
         }
 
         .brand img {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             border: 2px solid var(--glass-border);
             object-fit: cover;
@@ -85,46 +85,66 @@
 
         .brand-text h1 {
             font-family: 'Outfit', sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
 
         .brand-text p {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        /* Hero Section */
-        .hero {
+        /* Main Portal Layout */
+        .portal-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 8% 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 1024px) {
+            .portal-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+                padding-top: 40px;
+            }
+        }
+
+        /* Left Side: Content & Action */
+        .portal-content {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 8% 40px;
-            max-width: 900px;
-            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .portal-content {
+                align-items: center;
+            }
         }
 
         .tagline {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--accent-gold);
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-weight: 600;
-            margin-bottom: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
             animation: fadeIn 1s ease;
         }
 
         .main-title {
             font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-size: 46px;
             font-weight: 600;
             line-height: 1.2;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -138,21 +158,23 @@
         }
 
         .hero-desc {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--text-muted);
             line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 750px;
-            animation: fadeIn 1.5s ease;
+            margin-bottom: 36px;
         }
 
-        /* Action Buttons */
         .actions-container {
             display: flex;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .actions-container {
+                justify-content: center;
+            }
         }
 
         .btn {
@@ -160,9 +182,9 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 16px 36px;
+            padding: 14px 28px;
             border-radius: 50px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -176,21 +198,6 @@
             box-shadow: 0 8px 30px var(--card-glow);
             position: relative;
             overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
         }
 
         .btn-primary:hover {
@@ -208,42 +215,112 @@
 
         .btn-secondary:hover {
             transform: translateY(-3px);
-            background-color: rgba(15, 38, 140, 0.3);
+            background-color: rgba(15, 38, 140, 0.25);
             border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Right Side: Interactive CSS Smartphone Mockup */
+        .mockup-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: slideUp 1.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        .phone-mockup {
+            width: 290px;
+            height: 580px;
+            background: #000;
+            border-radius: 40px;
+            border: 10px solid #1c1d24;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.8), 
+                0 0 35px var(--card-glow);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Dynamic Island / Notch */
+        .phone-notch {
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 22px;
+            background: #000;
+            border-radius: 12px;
+            z-index: 10;
+            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.1);
+        }
+
+        /* iframe container */
+        .phone-screen-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: var(--bg-deep);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Mockup Glow Border */
+        .mockup-glow {
+            position: absolute;
+            width: 320px;
+            height: 610px;
+            background: radial-gradient(circle, rgba(15, 38, 140, 0.2) 0%, transparent 70%);
+            z-index: -1;
         }
 
         /* Store Badges */
         .stores-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 80px;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .stores-container {
+                align-items: center;
+            }
         }
 
         .stores-label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .badge-list {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 12px;
         }
 
         .store-badge {
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--glass-border);
-            padding: 10px 24px;
-            border-radius: 12px;
+            padding: 8px 18px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             cursor: not-allowed;
             position: relative;
             filter: grayscale(1);
@@ -251,7 +328,7 @@
         }
 
         .store-badge .badge-icon {
-            font-size: 24px;
+            font-size: 20px;
         }
 
         .store-badge-text {
@@ -260,69 +337,57 @@
 
         .store-badge-text span {
             display: block;
-            font-size: 9px;
+            font-size: 8px;
             color: var(--text-muted);
             text-transform: uppercase;
         }
 
         .store-badge-text strong {
             display: block;
-            font-size: 14px;
+            font-size: 12px;
             color: var(--text-light);
         }
 
         .soon-pill {
             position: absolute;
-            top: -10px;
-            right: -10px;
+            top: -8px;
+            right: -8px;
             background: linear-gradient(135deg, var(--accent-gold) 0%, #b08d1e 100%);
             color: var(--bg-deep);
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 800;
-            padding: 2px 8px;
+            padding: 1px 6px;
             border-radius: 20px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
         }
 
-        /* Prophecy & Info Section */
-        .info-section {
+        /* Prophecy Section */
+        .prophecy-section {
             width: 100%;
-            max-width: 1000px;
-            margin: 0 auto 80px;
+            max-width: 1200px;
+            margin: 40px auto 80px;
             padding: 0 8%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .info-section {
-                grid-template-columns: 1fr;
-            }
         }
 
         .info-card {
             background-color: var(--glass-bg);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
-            padding: 32px;
+            padding: 36px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
+            position: relative;
+            overflow: hidden;
         }
 
         .info-card h3 {
             font-family: 'Outfit', sans-serif;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             color: var(--accent-gold);
             display: flex;
             align-items: center;
@@ -330,22 +395,26 @@
         }
 
         .info-card p {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-light);
             line-height: 1.6;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             opacity: 0.9;
         }
 
         .prophecy-quote {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 16px;
+            font-size: 18px;
             color: #FFFFFF;
-            border-left: 3px solid var(--accent-gold);
-            padding-left: 16px;
-            margin: 20px 0;
-            line-height: 1.5;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 20px;
+            margin: 24px 0;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.02);
+            padding-top: 12px;
+            padding-bottom: 12px;
+            border-radius: 0 12px 12px 0;
         }
 
         /* Contacts Footer */
@@ -360,8 +429,8 @@
         }
 
         .footer-logo {
-            width: 60px;
-            height: 60px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             margin-bottom: 16px;
             border: 2px solid var(--glass-border);
@@ -369,13 +438,13 @@
 
         .footer-title {
             font-family: 'Outfit', sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
         }
 
         .footer-tagline {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             margin-bottom: 24px;
             text-transform: uppercase;
@@ -436,74 +505,82 @@
         </a>
     </header>
 
-    <div class="hero">
-        <div class="tagline">La Voix de la Prophétie</div>
-        <h2 class="main-title">Radio Jésus Vient</h2>
-        <p class="hero-desc">
-            La radio de vérité et de puissance spirituelle qui prépare la francophonie pour la glorieuse venue du Seigneur Jésus-Christ. Restez connectés pour ne manquer aucune prophétie de la fin des temps.
-        </p>
+    <div class="portal-container">
+        <!-- Left Side: Copy and Actions -->
+        <div class="portal-content">
+            <div class="tagline">La Voix de la Prophétie</div>
+            <h2 class="main-title">Radio Jésus Vient</h2>
+            <p class="hero-desc">
+                La radio de vérité et de puissance spirituelle qui prépare la francophonie pour la glorieuse venue de notre Seigneur Jésus-Christ. 
+                Une voix forte dans le désert pour éclairer les nations sur les événements prophétiques de la fin des temps.
+            </p>
 
-        <div class="actions-container">
-            <a href="/app.html" class="btn btn-primary">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-                Écouter le Direct
-            </a>
-            <a href="/org.radiojesusvient.radio.apk" download="RadioJesusVient.apk" class="btn btn-secondary">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
-                </svg>
-                Télécharger l'APK
-            </a>
+            <!-- Store and APK Actions -->
+            <div class="actions-container">
+                <a href="/app.html" target="_blank" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    Écouter le Direct
+                </a>
+                <a href="/org.radiojesusvient.radio.apk" download="RadioJesusVient.apk" class="btn btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                    </svg>
+                    Télécharger l'APK
+                </a>
+            </div>
+
+            <!-- Stores badges -->
+            <div class="stores-container">
+                <div class="stores-label">Disponible prochainement sur</div>
+                <div class="badge-list">
+                    <div class="store-badge">
+                        <div class="badge-icon">🤖</div>
+                        <div class="store-badge-text">
+                            <span>Bientôt sur</span>
+                            <strong>Google Play</strong>
+                        </div>
+                        <div class="soon-pill">Bientôt</div>
+                    </div>
+                    <div class="store-badge">
+                        <div class="badge-icon">🍎</div>
+                        <div class="store-badge-text">
+                            <span>Bientôt sur</span>
+                            <strong>App Store</strong>
+                        </div>
+                        <div class="soon-pill">Bientôt</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Beautiful CSS Smartphone Mockup with Live Player -->
+        <div class="mockup-wrapper">
+            <div class="mockup-glow"></div>
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen-container">
+                    <iframe src="/app.html" class="phone-screen" title="Aperçu interactif de l'application"></iframe>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="stores-container">
-        <div class="stores-label">Disponible prochainement sur les stores officiels</div>
-        <div class="badge-list">
-            <div class="store-badge">
-                <div class="badge-icon">🤖</div>
-                <div class="store-badge-text">
-                    <span>Disponible bientôt</span>
-                    <strong>Google Play</strong>
-                </div>
-                <div class="soon-pill">Bientôt</div>
-            </div>
-            <div class="store-badge">
-                <div class="badge-icon">🍎</div>
-                <div class="store-badge-text">
-                    <span>Disponible bientôt</span>
-                    <strong>App Store</strong>
-                </div>
-                <div class="soon-pill">Bientôt</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="info-section">
+    <!-- Prophecy Focus Section -->
+    <div class="prophecy-section">
         <div class="info-card">
             <h3>⏳ Les Prophéties de la Fin des Temps</h3>
             <p>
-                Le monde traverse une période de turbulences majeures qui annoncent les prémices du retour glorieux de notre Sauveur. À travers nos programmes, nous décryptons l'actualité mondiale sous l'angle de la parole prophétique immuable de Dieu.
+                Le monde traverse une période historique cruciale. Les événements géopolitiques, climatiques et moraux d'aujourd'hui ne sont que l'accomplissement précis des écritures saintes et des prémices du retour glorieux de notre Sauveur.
             </p>
             <div class="prophecy-quote">
                 "Au milieu de la nuit, on cria : Voici l'époux, allez à sa rencontre !"<br>
                 — Matthieu 25:6
             </div>
             <p>
-                Restez connectés à notre flux pour fortifier votre foi, affermir votre sanctification, et être un membre actif de la préparation spirituelle des nations francophones.
+                À travers nos enseignements audio, nos émissions de réveil et de vigilance, nous décryptons l'actualité à la lumière de la parole prophétique. Restez branchés et fermes dans la sanctification pour ne manquer aucune révélation et aucun avertissement spirituel de ces derniers temps.
             </p>
-        </div>
-
-        <div class="info-card">
-            <h3>📱 Pourquoi installer notre APK ?</h3>
-            <p>
-                L'APK (application Android officielle directe) vous offre une expérience optimisée unique :
-            </p>
-            <p><strong>🔒 Souveraineté & Continuité :</strong> Une application légère, garantie sans publicité et directe, libre de toute censure ou contrainte.</p>
-            <p><strong>🚀 Mode Hors-Ligne (PWA) :</strong> Le service worker intégré met en cache instantanément les textes, faq, et le verset du jour pour y accéder même en voyage sans aucune connexion !</p>
-            <p><strong>🎧 Écoute continue en arrière-plan :</strong> Bloquez votre écran, répondez à vos messages sur WhatsApp ou naviguez sur internet : l'écoute continue du live reste active en arrière-plan sans coupure !</p>
         </div>
     </div>
 

@@ -1935,9 +1935,9 @@
                         if (isEco) {
                             playerStatusDesc.textContent = currentLang === 'fr' ? 'Flux optimisé actif (Économie)' : 'Optimized stream active (Data Saver)';
                         } else {
-                            playerStatusDesc.textContent = currentLang === 'fr' ? 'Le Discipulat en direct' : 'Discipleship live';
+                            playerStatusDesc.textContent = currentLang === 'fr' ? 'Radio Jésus Vient' : 'Radio Jesus Vient';
                         }
-                        playerStatusTitle.textContent = currentLang === 'fr' ? 'Lecture active' : 'Now Playing';
+                        playerStatusTitle.textContent = currentLang === 'fr' ? 'Flux Live' : 'Live Stream';
                         
                         startTimer(true);
                         if ('mediaSession' in navigator) {
@@ -1960,8 +1960,8 @@
                 isPlaying = false;
                 playBtn.classList.remove('playing');
                 playSvg.innerHTML = `<path d="M8 5v14l11-7z"/>`;
-                playerStatusDesc.textContent = currentLang === 'fr' ? 'Écouter la radio direct' : 'Listen to live radio';
-                playerStatusTitle.textContent = currentLang === 'fr' ? 'En pause' : 'Paused';
+                playerStatusDesc.textContent = currentLang === 'fr' ? 'En pause' : 'Paused';
+                playerStatusTitle.textContent = currentLang === 'fr' ? 'Flux Live' : 'Live Stream';
                 stopTimer(false);
                 
                 if ('mediaSession' in navigator) {
@@ -1989,7 +1989,7 @@
                 if (isEco) {
                     playerStatusDesc.textContent = currentLang === 'fr' ? 'Flux optimisé actif (Économie)' : 'Optimized stream active (Data Saver)';
                 } else {
-                    playerStatusDesc.textContent = currentLang === 'fr' ? 'Le Discipulat en direct' : 'Discipleship live';
+                    playerStatusDesc.textContent = currentLang === 'fr' ? 'Radio Jésus Vient' : 'Radio Jesus Vient';
                 }
                 startTimer(false);
             });
@@ -2322,8 +2322,8 @@
                     ecoPill.style.display = 'none';
                     if (isPlaying) {
                         playerStatusDesc.textContent = currentLang === 'fr' 
-                            ? 'Le Discipulat en direct' 
-                            : 'Discipleship live';
+                            ? 'Radio Jésus Vient' 
+                            : 'Radio Jesus Vient';
                     }
                     showToast(currentLang === 'fr' ? "Mode Économie Data désactivé" : "Data Saver Mode disabled");
                 }

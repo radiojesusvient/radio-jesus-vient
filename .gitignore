@@ -3,6 +3,7 @@
 
 # Exceptions: Allow only the official production PWA files
 !index.html
+!app.html
 !manifest.json
 !sw.js
 !LOGO PNG.png

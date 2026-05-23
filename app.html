@@ -522,6 +522,46 @@
             color: var(--text-secondary);
         }
 
+        /* Useful Links Modal Item Styling */
+        .links-section {
+            margin-bottom: 6px;
+        }
+        .link-item-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+        .link-item-row:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .link-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .link-go-arrow {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+        .link-item-row:hover .link-go-arrow {
+            transform: translateX(4px);
+        }
+
         /* SOUTENIR RJV (DISCRET MAIS VISIBLE) */
         .support-btn-container {
             margin-bottom: 16px;
@@ -1387,7 +1427,7 @@
                     </a>
 
                     <!-- Facebook -->
-                    <a href="https://facebook.com" target="_blank" class="action-card">
+                    <a href="https://facebook.com/radiojesusvient" target="_blank" class="action-card">
                         <div class="action-icon-bg">
                             <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                         </div>
@@ -1396,12 +1436,21 @@
                     </a>
 
                     <!-- YouTube -->
-                    <a href="https://youtube.com" target="_blank" class="action-card">
+                    <a href="https://youtube.com/@radiojesusvient" target="_blank" class="action-card">
                         <div class="action-icon-bg">
                             <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
                         </div>
                         <span class="action-label" data-translate="action_youtube_label">YouTube</span>
                         <span class="action-desc" data-translate="action_youtube_desc">Cultes & Vidéos</span>
+                    </a>
+
+                    <!-- Liens Utiles -->
+                    <a href="#" id="usefulLinksBtn" class="action-card">
+                        <div class="action-icon-bg">
+                            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        </div>
+                        <span class="action-label" data-translate="action_links_label">Liens Utiles</span>
+                        <span class="action-desc" data-translate="action_links_desc">Réseaux & Archives</span>
                     </a>
 
                     <!-- Partager l'app -->
@@ -1694,6 +1743,124 @@
                     </div>
                 </div>
 
+                <!-- Useful Links Modal Card -->
+                <div class="modal-card" id="linksModal" style="display: none;">
+                    <div class="modal-header">
+                        <h4 class="modal-title" data-translate="modal_links_title">Liens Utiles & Réseaux</h4>
+                        <button class="modal-close-btn" id="closeLinksBtn">&times;</button>
+                    </div>
+                    <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px; max-height: 70vh; overflow-y: auto; padding-right: 4px;">
+                        
+                        <!-- YouTube Channels -->
+                        <div class="links-section">
+                            <h5 style="color: var(--gold); font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                📺 Chaînes YouTube
+                            </h5>
+                            <div class="links-list" style="display: flex; flex-direction: column; gap: 8px;">
+                                <a href="https://youtube.com/@radiojesusvient" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
+                                        🔴
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Radio Jésus Vient</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Chaîne principale officielle</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://youtube.com/@repentancefrancophonie" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
+                                        🔴
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Repentance Francophonie</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Prédications & Enseignements</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://youtube.com/@repentancecameroun" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(255, 0, 0, 0.1); color: #ff0000;">
+                                        🔴
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Repentance Cameroun</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Actualités & Messages spirituels</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Telegram & WhatsApp -->
+                        <div class="links-section">
+                            <h5 style="color: var(--gold); font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                💬 Réseaux & Médias
+                            </h5>
+                            <div class="links-list" style="display: flex; flex-direction: column; gap: 8px;">
+                                <a href="https://t.me/repentcameroun" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(0, 136, 204, 0.1); color: #0088cc;">
+                                        ✈️
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Canal Telegram</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Alertes de fin des temps</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://facebook.com/radiojesusvient" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(24, 119, 242, 0.1); color: #1877f2;">
+                                        🔵
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Page Facebook</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Publications & Actualités</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Predication Archives -->
+                        <div class="links-section">
+                            <h5 style="color: var(--gold); font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                                📂 Archives Audios & Prédications (MP3)
+                            </h5>
+                            <div class="links-list" style="display: flex; flex-direction: column; gap: 8px;">
+                                <a href="https://u.pcloud.link/publink/schowb?code=kZM10U7ZvMXUvBSIGvu2o8I1ssAKimV4TIMy" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(0, 178, 255, 0.1); color: #00b2ff;">
+                                        ☁️
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Espace de Téléchargement pCloud</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Accès direct aux fichiers audio MP3</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://drive.google.com/drive/folders/1otDqcKuR7if_e-nC_Gi4glmy7mJwryTU" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(52, 168, 83, 0.1); color: #34a853;">
+                                        📂
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Google Drive Archives (1)</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Dossier d'enregistrements audio</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                                <a href="https://drive.google.com/drive/folders/1dHT52Du2REWeBDWfeMPWYknPAcZJRMol" target="_blank" class="link-item-row">
+                                    <div class="link-icon-circle" style="background: rgba(52, 168, 83, 0.1); color: #34a853;">
+                                        📂
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary); margin: 0;">Google Drive Archives (2)</p>
+                                        <p style="font-size: 0.62rem; color: var(--text-secondary); margin: 2px 0 0 0;">Dossier complémentaire d'audios</p>
+                                    </div>
+                                    <span class="link-go-arrow">➔</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -1729,6 +1896,9 @@
                 action_web_desc: "Visiter notre portail",
                 action_share_label: "Partager l'App",
                 action_share_desc: "Envoyer le lien",
+                action_links_label: "Liens Utiles",
+                action_links_desc: "Réseaux & Archives",
+                modal_links_title: "Liens Utiles & Réseaux",
                 support_title: "Soutenir la Radio",
                 support_subtitle: "Mobile Money — Orange / MTN",
                 invite_title: "Inviter un ami à écouter RJV",
@@ -1800,6 +1970,9 @@
                 action_web_desc: "Visit our portal",
                 action_share_label: "Share the App",
                 action_share_desc: "Send the link",
+                action_links_label: "Useful Links",
+                action_links_desc: "Networks & Archives",
+                modal_links_title: "Useful Links & Networks",
                 support_title: "Support the Radio",
                 support_subtitle: "Mobile Money — Orange / MTN",
                 invite_title: "Invite a Friend to Listen",
@@ -2022,16 +2195,19 @@
             const privacyModal = document.getElementById('privacyModal');
             const settingsModal = document.getElementById('settingsModal');
             const legalModal = document.getElementById('legalModal');
+            const linksModal = document.getElementById('linksModal');
             
             const supportBtn = document.getElementById('supportBtn');
             const privacyLink = document.getElementById('privacyLink');
             const settingsToggleBtn = document.getElementById('settingsToggleBtn');
             const legalLink = document.getElementById('legalLink');
+            const usefulLinksBtn = document.getElementById('usefulLinksBtn');
             
             const closeSupport = document.getElementById('closeSupportBtn');
             const closePrivacy = document.getElementById('closePrivacyBtn');
             const closeSettingsBtn = document.getElementById('closeSettingsBtn');
             const closeLegalBtn = document.getElementById('closeLegalBtn');
+            const closeLinksBtn = document.getElementById('closeLinksBtn');
 
             // Support tabs
             const tabSpontaneousBtn = document.getElementById('tabSpontaneousBtn');
@@ -2065,12 +2241,18 @@
                     privacyModal.style.display = 'none';
                     settingsModal.style.display = 'none';
                     legalModal.style.display = 'none';
+                    linksModal.style.display = 'none';
                 }, 300);
             }
 
             supportBtn.addEventListener('click', () => openModal(supportModal));
             privacyLink.addEventListener('click', () => openModal(privacyModal));
             settingsToggleBtn.addEventListener('click', () => openModal(settingsModal));
+            
+            usefulLinksBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(linksModal);
+            });
             
             legalLink.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2081,6 +2263,7 @@
             closeSupport.addEventListener('click', closeModal);
             closePrivacy.addEventListener('click', closeModal);
             closeSettingsBtn.addEventListener('click', closeModal);
+            closeLinksBtn.addEventListener('click', closeModal);
             
             closeLegalBtn.addEventListener('click', () => {
                 legalModal.style.display = 'none';

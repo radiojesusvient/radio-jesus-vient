@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "org.radiojesusvient.app",
+    "sha256_cert_fingerprints": ["86:A8:12:7D:9F:BC:D4:7F:3D:09:00:46:55:A1:D2:FD:44:D3:B2:AE:63:9D:C2:B2:00:D4:7C:B7:26:6F:A2:8F"]
+  }
+}]

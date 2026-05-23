@@ -10,6 +10,8 @@
 !icon-512.png
 !.gitignore
 !README.md
+!.well-known/
+!.well-known/assetlinks.json
 
 # wrangler files
 .wrangler
